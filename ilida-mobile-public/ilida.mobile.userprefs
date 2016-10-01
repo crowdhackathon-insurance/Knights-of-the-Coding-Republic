@@ -1,0 +1,21 @@
+﻿<Properties StartupConfiguration="{8A32E867-5526-4094-B2E7-E036287EAA1A}|Default">
+  <MonoDevelop.Ide.Workbench ActiveDocument="ilida.mobile/Models/Notification.cs">
+    <Files>
+      <File FileName="ilida.mobile/Models/Vehicle.cs" Line="5" Column="3" />
+      <File FileName="ilida.mobile/ViewModels/AccidentViewModel.cs" Line="40" Column="28" />
+      <File FileName="ilida.mobile/ViewModels/AccidentListViewModel.cs" Line="48" Column="5" />
+      <File FileName="iOS/Main.cs" Line="17" Column="1" />
+      <File FileName="ilida.mobile/Services/NavigationService.cs" Line="68" Column="38" />
+      <File FileName="ilida.mobile/Models/Notification.cs" Line="9" Column="42" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore>
+      <Breakpoint file="/Users/hampos/Projects/ilida.mobile/ilida.mobile/ViewModels/SubmitAccidentViewModel.cs" line="72" column="1" />
+    </BreakpointStore>
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.ItemProperties.ilida.mobile.iOS PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneSimulatorTarget.2089A680-E917-44E9-9196-E797B34C518E" />
+  <MonoDevelop.Ide.ItemProperties.ilida.mobile.Droid PreferredExecutionTarget="Android.ZX1G429Q9Q" />
+</Properties>

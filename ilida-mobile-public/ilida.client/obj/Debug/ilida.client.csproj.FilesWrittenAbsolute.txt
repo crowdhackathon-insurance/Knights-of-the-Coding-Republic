@@ -1,0 +1,5 @@
+/Users/hampos/Projects/ilida.mobile/ilida.client/obj/Debug/.NETPortable,Version=v4.5,Profile=Profile111.AssemblyAttribute.cs
+/Users/hampos/Projects/ilida.mobile/ilida.client/bin/Debug/ilida.client.dll.mdb
+/Users/hampos/Projects/ilida.mobile/ilida.client/bin/Debug/ilida.client.dll
+/Users/hampos/Projects/ilida.mobile/ilida.client/obj/Debug/ilida.client.dll
+/Users/hampos/Projects/ilida.mobile/ilida.client/obj/Debug/ilida.client.dll.mdb

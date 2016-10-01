@@ -1,0 +1,15 @@
+/Users/hampos/Projects/ilida.mobile/iOS/obj/iPhoneSimulator/Debug/Xamarin.iOS,Version=v1.0.AssemblyAttribute.cs
+/Users/hampos/Projects/ilida.mobile/iOS/obj/iPhoneSimulator/Debug/ibtool/_BundleResourceWithLogicalName.items
+/Users/hampos/Projects/ilida.mobile/iOS/obj/iPhoneSimulator/Debug/actool/_PartialAppManifest.items
+/Users/hampos/Projects/ilida.mobile/iOS/obj/iPhoneSimulator/Debug/actool/_BundleResourceWithLogicalName.items
+/Users/hampos/Projects/ilida.mobile/iOS/obj/iPhoneSimulator/Debug/optimized/
+/Users/hampos/Projects/ilida.mobile/iOS/bin/iPhoneSimulator/Debug/ilida.mobile.iOS.exe.mdb
+/Users/hampos/Projects/ilida.mobile/iOS/bin/iPhoneSimulator/Debug/ilida.mobile.iOS.exe
+/Users/hampos/Projects/ilida.mobile/iOS/obj/iPhoneSimulator/Debug/ilida.mobile.iOS.exe
+/Users/hampos/Projects/ilida.mobile/iOS/obj/iPhoneSimulator/Debug/ilida.mobile.iOS.exe.mdb
+/Users/hampos/Projects/ilida.mobile/iOS/bin/iPhoneSimulator/Debug/Xamarin.Forms.Core.dll
+/Users/hampos/Projects/ilida.mobile/iOS/bin/iPhoneSimulator/Debug/Xamarin.Forms.Platform.dll
+/Users/hampos/Projects/ilida.mobile/iOS/bin/iPhoneSimulator/Debug/Xamarin.Forms.Platform.iOS.dll
+/Users/hampos/Projects/ilida.mobile/iOS/bin/iPhoneSimulator/Debug/Xamarin.Forms.Xaml.dll
+/Users/hampos/Projects/ilida.mobile/iOS/bin/iPhoneSimulator/Debug/ilida.mobile.dll
+/Users/hampos/Projects/ilida.mobile/iOS/bin/iPhoneSimulator/Debug/ilida.mobile.dll.mdb
