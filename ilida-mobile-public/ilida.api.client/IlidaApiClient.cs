@@ -9,81 +9,81 @@ using System.Threading.Tasks;
 
 namespace Ilida.Api.Client
 {
-    public class IlidaApiClient : IIlidaApi
-    {
-        private readonly HttpClient _httpClient;
+	public class IlidaApiClient : IIlidaApi
+	{
+		private readonly HttpClient _httpClient;
 
-        public IlidaApiClient()
-        {
-            _httpClient = new HttpClient();
-            _httpClient.BaseAddress = new Uri("http://ilida-api.azurewebsites.net/");
-            _httpClient.DefaultRequestHeaders.TryAddWithoutValidation("Accept", "application/json");
-        }
+		public IlidaApiClient()
+		{
+			_httpClient = new HttpClient();
+			_httpClient.BaseAddress = new Uri("http://ilida-api.azurewebsites.net/");
+			_httpClient.DefaultRequestHeaders.TryAddWithoutValidation("Accept", "application/json");
+		}
 
-        public void Dispose()
-        {
-            _httpClient.Dispose();
-        }
+		public void Dispose()
+		{
+			_httpClient.Dispose();
+		}
 
-        public async Task<List<AccidentDto>> GetAccidentsAsync(long userId, CancellationToken token = default(CancellationToken))
-        {
-            var request = new HttpRequestMessage(HttpMethod.Get, "api/accidents?userId=" + userId);
+		public async Task<List<AccidentDto>> GetAccidentsAsync(long userId = 0, long statusId = 0, CancellationToken token = default(CancellationToken))
+		{
+			var request = new HttpRequestMessage(HttpMethod.Get, "api/accidents?userId=" + userId + "&workflowstatusid=" + statusId);
 
-            var response = await _httpClient.SendAsync(request, token).ConfigureAwait(false);
+			var response = await _httpClient.SendAsync(request, token).ConfigureAwait(false);
 
-            return await DeserializeAsync<List<AccidentDto>>(response);
-        }
+			return await DeserializeAsync<List<AccidentDto>>(response);
+		}
 
-        public async Task<AccidentDto> GetAccidentAsync(long userId, long accidentId, CancellationToken token = default(CancellationToken))
-        {
-            var request = new HttpRequestMessage(HttpMethod.Get, "api/accidents/" + accidentId + "?userId=" + userId);
+		public async Task<AccidentDto> GetAccidentAsync(long userId, long accidentId, CancellationToken token = default(CancellationToken))
+		{
+			var request = new HttpRequestMessage(HttpMethod.Get, "api/accidents/" + accidentId + "?userId=" + userId);
 
-            var response = await _httpClient.SendAsync(request, token).ConfigureAwait(false);
+			var response = await _httpClient.SendAsync(request, token).ConfigureAwait(false);
 
-            return await DeserializeAsync<AccidentDto>(response);
-        }
+			return await DeserializeAsync<AccidentDto>(response);
+		}
 
-        public async Task<AccidentDto> CreateAccidentAsync(CreateAccidentRequest createAccidentRequest, CancellationToken token = default(CancellationToken))
-        {
-            var request = new HttpRequestMessage(HttpMethod.Post, "api/accidents")
-            {
-                Content = new StringContent(JsonConvert.SerializeObject(createAccidentRequest), Encoding.UTF8, "application/json")
-            };
+		public async Task<AccidentDto> CreateAccidentAsync(CreateAccidentRequest createAccidentRequest, CancellationToken token = default(CancellationToken))
+		{
+			var request = new HttpRequestMessage(HttpMethod.Post, "api/accidents")
+			{
+				Content = new StringContent(JsonConvert.SerializeObject(createAccidentRequest), Encoding.UTF8, "application/json")
+			};
 
-            var response = await _httpClient.SendAsync(request, token).ConfigureAwait(false);
+			var response = await _httpClient.SendAsync(request, token).ConfigureAwait(false);
 
-            return await DeserializeAsync<AccidentDto>(response);
-        }
+			return await DeserializeAsync<AccidentDto>(response);
+		}
 
-        public async Task<UserDto> LoginAsync(LoginRequest loginRequest, CancellationToken token = default(CancellationToken))
-        {
-            var request = new HttpRequestMessage(HttpMethod.Post, "api/login")
-            {
-                Content = new StringContent(JsonConvert.SerializeObject(loginRequest), Encoding.UTF8, "application/json")
-            };
+		public async Task<UserDto> LoginAsync(LoginRequest loginRequest, CancellationToken token = default(CancellationToken))
+		{
+			var request = new HttpRequestMessage(HttpMethod.Post, "api/login")
+			{
+				Content = new StringContent(JsonConvert.SerializeObject(loginRequest), Encoding.UTF8, "application/json")
+			};
 
-            var response = await _httpClient.SendAsync(request, token).ConfigureAwait(false);
+			var response = await _httpClient.SendAsync(request, token).ConfigureAwait(false);
 
-            return await DeserializeAsync<UserDto>(response);
-        }
+			return await DeserializeAsync<UserDto>(response);
+		}
 
-        public async Task<bool> AcceptAccidentAsync(AcceptAccidentRequest acceptAccidentRequest, CancellationToken token = default(CancellationToken))
-        {
-            var request = new HttpRequestMessage(HttpMethod.Post, "api/accidents/" + acceptAccidentRequest.AccidentId + "/accept?userId=" + acceptAccidentRequest.UserId);
+		public async Task<bool> AcceptAccidentAsync(AcceptAccidentRequest acceptAccidentRequest, CancellationToken token = default(CancellationToken))
+		{
+			var request = new HttpRequestMessage(HttpMethod.Post, "api/accidents/" + acceptAccidentRequest.AccidentId + "/accept?userId=" + acceptAccidentRequest.UserId);
 
-            var response = await _httpClient.SendAsync(request, token).ConfigureAwait(false);
+			var response = await _httpClient.SendAsync(request, token).ConfigureAwait(false);
 
-            response.EnsureSuccessStatusCode();
-            return true;
-        }
+			response.EnsureSuccessStatusCode();
+			return true;
+		}
 
-        private async Task<T> DeserializeAsync<T>(HttpResponseMessage response)
-        {
-            response.EnsureSuccessStatusCode();
+		private async Task<T> DeserializeAsync<T>(HttpResponseMessage response)
+		{
+			response.EnsureSuccessStatusCode();
 
-            var content = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
+			var content = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
 
-            return JsonConvert.DeserializeObject<T>(content);
-        }
-    }
+			return JsonConvert.DeserializeObject<T>(content);
+		}
+	}
 }

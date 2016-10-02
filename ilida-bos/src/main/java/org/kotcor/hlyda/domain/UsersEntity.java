@@ -9,65 +9,65 @@ import java.util.Set;
 @Entity
 @Table(name = "Users", schema = "dbo", catalog = "IlidaDB")
 public class UsersEntity {
-    private long id;
-    private String username;
-    private String password;
-    private String fullName;
-    private String idCard;
-    private Set<RolesEntity> roles;
+    private long Id;
+    private String Username;
+    private String Password;
+    private String FullName;
+    private String IdCard;
+    private Set<RolesEntity> Roles;
 
     @Id
     @Column(name = "Id", nullable = false)
     public long getId() {
-        return id;
+        return Id;
     }
 
     public UsersEntity setId(long id) {
-        this.id = id;
+        this.Id = id;
         return this;
     }
 
     @Basic
     @Column(name = "Username", nullable = false, length = 50)
     public String getUsername() {
-        return username;
+        return Username;
     }
 
     public UsersEntity setUsername(String username) {
-        this.username = username;
+        this.Username = username;
         return this;
     }
 
     @Basic
     @Column(name = "Password", nullable = false, length = 50)
     public String getPassword() {
-        return password;
+        return Password;
     }
 
     public UsersEntity setPassword(String password) {
-        this.password = password;
+        this.Password = password;
         return this;
     }
 
     @Basic
     @Column(name = "FullName", nullable = false, length = 255)
     public String getFullName() {
-        return fullName;
+        return FullName;
     }
 
     public UsersEntity setFullName(String fullName) {
-        this.fullName = fullName;
+        this.FullName = fullName;
         return this;
     }
 
     @Basic
     @Column(name = "IdCard", nullable = false, length = 10)
     public String getIdCard() {
-        return idCard;
+        return IdCard;
     }
 
     public UsersEntity setIdCard(String idCard) {
-        this.idCard = idCard;
+        this.IdCard = idCard;
         return this;
     }
 
@@ -78,33 +78,33 @@ public class UsersEntity {
 
         UsersEntity that = (UsersEntity) o;
 
-        if (id != that.id) return false;
-        if (username != null ? !username.equals(that.username) : that.username != null) return false;
-        if (password != null ? !password.equals(that.password) : that.password != null) return false;
-        if (fullName != null ? !fullName.equals(that.fullName) : that.fullName != null) return false;
-        if (idCard != null ? !idCard.equals(that.idCard) : that.idCard != null) return false;
+        if (Id != that.Id) return false;
+        if (Username != null ? !Username.equals(that.Username) : that.Username != null) return false;
+        if (Password != null ? !Password.equals(that.Password) : that.Password != null) return false;
+        if (FullName != null ? !FullName.equals(that.FullName) : that.FullName != null) return false;
+        if (IdCard != null ? !IdCard.equals(that.IdCard) : that.IdCard != null) return false;
 
         return true;
     }
 
     @Override
     public int hashCode() {
-        int result = (int) (id ^ (id >>> 32));
-        result = 31 * result + (username != null ? username.hashCode() : 0);
-        result = 31 * result + (password != null ? password.hashCode() : 0);
-        result = 31 * result + (fullName != null ? fullName.hashCode() : 0);
-        result = 31 * result + (idCard != null ? idCard.hashCode() : 0);
+        int result = (int) (Id ^ (Id >>> 32));
+        result = 31 * result + (Username != null ? Username.hashCode() : 0);
+        result = 31 * result + (Password != null ? Password.hashCode() : 0);
+        result = 31 * result + (FullName != null ? FullName.hashCode() : 0);
+        result = 31 * result + (IdCard != null ? IdCard.hashCode() : 0);
         return result;
     }
 
     @ManyToMany
     @JoinTable(name = "UserRoles", catalog = "IlidaDB", schema = "dbo", joinColumns = @JoinColumn(name = "UserId", referencedColumnName = "Id", nullable = false), inverseJoinColumns = @JoinColumn(name = "RoleId", referencedColumnName = "Id", nullable = false))
     public Set<RolesEntity> getRoles() {
-        return roles;
+        return Roles;
     }
 
     public UsersEntity setRoles(Set<RolesEntity> roles) {
-        this.roles = roles;
+        this.Roles = roles;
         return this;
     }
 }

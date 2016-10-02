@@ -8,88 +8,88 @@ import javax.persistence.*;
 @Entity
 @Table(name = "AccidentParticipants", schema = "dbo", catalog = "IlidaDB")
 public class AccidentParticipantsEntity {
-    private long id;
-    private String idCard;
-    private boolean isDriver;
-    private boolean hasInjuries;
-    private String signUrl;
-    private long accidentId;
-    private Long accidentCarId;
+    private long Id;
+    private String IdCard;
+    private boolean IsDriver;
+    private boolean HasInjuries;
+    private String SignUrl;
+    private long AccidentId;
+    private Long AccidentCarId;
 
     @Id
     @Column(name = "Id", nullable = false)
     public long getId() {
-        return id;
+        return Id;
     }
 
     public AccidentParticipantsEntity setId(long id) {
-        this.id = id;
+        this.Id = id;
         return this;
     }
 
     @Basic
     @Column(name = "IdCard", nullable = false, length = 10)
     public String getIdCard() {
-        return idCard;
+        return IdCard;
     }
 
     public AccidentParticipantsEntity setIdCard(String idCard) {
-        this.idCard = idCard;
+        this.IdCard = idCard;
         return this;
     }
 
     @Basic
     @Column(name = "IsDriver", nullable = false)
     public boolean isDriver() {
-        return isDriver;
+        return IsDriver;
     }
 
     public AccidentParticipantsEntity setDriver(boolean driver) {
-        isDriver = driver;
+        IsDriver = driver;
         return this;
     }
 
     @Basic
     @Column(name = "HasInjuries", nullable = false)
     public boolean isHasInjuries() {
-        return hasInjuries;
+        return HasInjuries;
     }
 
     public AccidentParticipantsEntity setHasInjuries(boolean hasInjuries) {
-        this.hasInjuries = hasInjuries;
+        this.HasInjuries = hasInjuries;
         return this;
     }
 
     @Basic
     @Column(name = "SignUrl", nullable = true, length = 2147483647)
     public String getSignUrl() {
-        return signUrl;
+        return SignUrl;
     }
 
     public AccidentParticipantsEntity setSignUrl(String signUrl) {
-        this.signUrl = signUrl;
+        this.SignUrl = signUrl;
         return this;
     }
 
     @Basic
     @Column(name = "AccidentId", nullable = false)
     public long getAccidentId() {
-        return accidentId;
+        return AccidentId;
     }
 
     public AccidentParticipantsEntity setAccidentId(long accidentId) {
-        this.accidentId = accidentId;
+        this.AccidentId = accidentId;
         return this;
     }
 
     @Basic
     @Column(name = "AccidentCar_Id", nullable = true)
     public Long getAccidentCarId() {
-        return accidentCarId;
+        return AccidentCarId;
     }
 
     public AccidentParticipantsEntity setAccidentCarId(Long accidentCarId) {
-        this.accidentCarId = accidentCarId;
+        this.AccidentCarId = accidentCarId;
         return this;
     }
 
@@ -100,13 +100,13 @@ public class AccidentParticipantsEntity {
 
         AccidentParticipantsEntity that = (AccidentParticipantsEntity) o;
 
-        if (id != that.id) return false;
-        if (isDriver != that.isDriver) return false;
-        if (hasInjuries != that.hasInjuries) return false;
-        if (accidentId != that.accidentId) return false;
-        if (idCard != null ? !idCard.equals(that.idCard) : that.idCard != null) return false;
-        if (signUrl != null ? !signUrl.equals(that.signUrl) : that.signUrl != null) return false;
-        if (accidentCarId != null ? !accidentCarId.equals(that.accidentCarId) : that.accidentCarId != null)
+        if (Id != that.Id) return false;
+        if (IsDriver != that.IsDriver) return false;
+        if (HasInjuries != that.HasInjuries) return false;
+        if (AccidentId != that.AccidentId) return false;
+        if (IdCard != null ? !IdCard.equals(that.IdCard) : that.IdCard != null) return false;
+        if (SignUrl != null ? !SignUrl.equals(that.SignUrl) : that.SignUrl != null) return false;
+        if (AccidentCarId != null ? !AccidentCarId.equals(that.AccidentCarId) : that.AccidentCarId != null)
             return false;
 
         return true;
@@ -114,13 +114,13 @@ public class AccidentParticipantsEntity {
 
     @Override
     public int hashCode() {
-        int result = (int) (id ^ (id >>> 32));
-        result = 31 * result + (idCard != null ? idCard.hashCode() : 0);
-        result = 31 * result + (isDriver ? 1 : 0);
-        result = 31 * result + (hasInjuries ? 1 : 0);
-        result = 31 * result + (signUrl != null ? signUrl.hashCode() : 0);
-        result = 31 * result + (int) (accidentId ^ (accidentId >>> 32));
-        result = 31 * result + (accidentCarId != null ? accidentCarId.hashCode() : 0);
+        int result = (int) (Id ^ (Id >>> 32));
+        result = 31 * result + (IdCard != null ? IdCard.hashCode() : 0);
+        result = 31 * result + (IsDriver ? 1 : 0);
+        result = 31 * result + (HasInjuries ? 1 : 0);
+        result = 31 * result + (SignUrl != null ? SignUrl.hashCode() : 0);
+        result = 31 * result + (int) (AccidentId ^ (AccidentId >>> 32));
+        result = 31 * result + (AccidentCarId != null ? AccidentCarId.hashCode() : 0);
         return result;
     }
 }

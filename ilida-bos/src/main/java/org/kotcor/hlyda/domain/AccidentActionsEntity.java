@@ -9,100 +9,100 @@ import java.sql.Timestamp;
 @Entity
 @Table(name = "AccidentActions", schema = "dbo", catalog = "IlidaDB")
 public class AccidentActionsEntity {
-    private long id;
-    private Timestamp timestamp;
-    private long previousWorkflowStatusId;
-    private long nextWorkflowStatusId;
-    private String comment;
-    private long accidentId;
-    private long userId;
-    private long workflowActionId;
+    private long Id;
+    private Timestamp Timestamp;
+    private long PreviousWorkflowStatusId;
+    private long NextWorkflowStatusId;
+    private String Comment;
+    private long AccidentId;
+    private long UserId;
+    private long WorkflowActionId;
 
     @Id
     @Column(name = "Id", nullable = false)
     public long getId() {
-        return id;
+        return Id;
     }
 
     public AccidentActionsEntity setId(long id) {
-        this.id = id;
+        this.Id = id;
         return this;
     }
 
     @Basic
     @Column(name = "Timestamp", nullable = false)
     public Timestamp getTimestamp() {
-        return timestamp;
+        return Timestamp;
     }
 
     public AccidentActionsEntity setTimestamp(Timestamp timestamp) {
-        this.timestamp = timestamp;
+        this.Timestamp = timestamp;
         return this;
     }
 
     @Basic
     @Column(name = "PreviousWorkflowStatusId", nullable = false)
     public long getPreviousWorkflowStatusId() {
-        return previousWorkflowStatusId;
+        return PreviousWorkflowStatusId;
     }
 
     public AccidentActionsEntity setPreviousWorkflowStatusId(long previousWorkflowStatusId) {
-        this.previousWorkflowStatusId = previousWorkflowStatusId;
+        this.PreviousWorkflowStatusId = previousWorkflowStatusId;
         return this;
     }
 
     @Basic
     @Column(name = "NextWorkflowStatusId", nullable = false)
     public long getNextWorkflowStatusId() {
-        return nextWorkflowStatusId;
+        return NextWorkflowStatusId;
     }
 
     public AccidentActionsEntity setNextWorkflowStatusId(long nextWorkflowStatusId) {
-        this.nextWorkflowStatusId = nextWorkflowStatusId;
+        this.NextWorkflowStatusId = nextWorkflowStatusId;
         return this;
     }
 
     @Basic
     @Column(name = "Comment", nullable = true, length = 2147483647)
     public String getComment() {
-        return comment;
+        return Comment;
     }
 
     public AccidentActionsEntity setComment(String comment) {
-        this.comment = comment;
+        this.Comment = comment;
         return this;
     }
 
     @Basic
     @Column(name = "AccidentId", nullable = false)
     public long getAccidentId() {
-        return accidentId;
+        return AccidentId;
     }
 
     public AccidentActionsEntity setAccidentId(long accidentId) {
-        this.accidentId = accidentId;
+        this.AccidentId = accidentId;
         return this;
     }
 
     @Basic
     @Column(name = "UserId", nullable = false)
     public long getUserId() {
-        return userId;
+        return UserId;
     }
 
     public AccidentActionsEntity setUserId(long userId) {
-        this.userId = userId;
+        this.UserId = userId;
         return this;
     }
 
     @Basic
     @Column(name = "WorkflowActionId", nullable = false)
     public long getWorkflowActionId() {
-        return workflowActionId;
+        return WorkflowActionId;
     }
 
     public AccidentActionsEntity setWorkflowActionId(long workflowActionId) {
-        this.workflowActionId = workflowActionId;
+        this.WorkflowActionId = workflowActionId;
         return this;
     }
 
@@ -113,28 +113,28 @@ public class AccidentActionsEntity {
 
         AccidentActionsEntity that = (AccidentActionsEntity) o;
 
-        if (id != that.id) return false;
-        if (previousWorkflowStatusId != that.previousWorkflowStatusId) return false;
-        if (nextWorkflowStatusId != that.nextWorkflowStatusId) return false;
-        if (accidentId != that.accidentId) return false;
-        if (userId != that.userId) return false;
-        if (workflowActionId != that.workflowActionId) return false;
-        if (timestamp != null ? !timestamp.equals(that.timestamp) : that.timestamp != null) return false;
-        if (comment != null ? !comment.equals(that.comment) : that.comment != null) return false;
+        if (Id != that.Id) return false;
+        if (PreviousWorkflowStatusId != that.PreviousWorkflowStatusId) return false;
+        if (NextWorkflowStatusId != that.NextWorkflowStatusId) return false;
+        if (AccidentId != that.AccidentId) return false;
+        if (UserId != that.UserId) return false;
+        if (WorkflowActionId != that.WorkflowActionId) return false;
+        if (Timestamp != null ? !Timestamp.equals(that.Timestamp) : that.Timestamp != null) return false;
+        if (Comment != null ? !Comment.equals(that.Comment) : that.Comment != null) return false;
 
         return true;
     }
 
     @Override
     public int hashCode() {
-        int result = (int) (id ^ (id >>> 32));
-        result = 31 * result + (timestamp != null ? timestamp.hashCode() : 0);
-        result = 31 * result + (int) (previousWorkflowStatusId ^ (previousWorkflowStatusId >>> 32));
-        result = 31 * result + (int) (nextWorkflowStatusId ^ (nextWorkflowStatusId >>> 32));
-        result = 31 * result + (comment != null ? comment.hashCode() : 0);
-        result = 31 * result + (int) (accidentId ^ (accidentId >>> 32));
-        result = 31 * result + (int) (userId ^ (userId >>> 32));
-        result = 31 * result + (int) (workflowActionId ^ (workflowActionId >>> 32));
+        int result = (int) (Id ^ (Id >>> 32));
+        result = 31 * result + (Timestamp != null ? Timestamp.hashCode() : 0);
+        result = 31 * result + (int) (PreviousWorkflowStatusId ^ (PreviousWorkflowStatusId >>> 32));
+        result = 31 * result + (int) (NextWorkflowStatusId ^ (NextWorkflowStatusId >>> 32));
+        result = 31 * result + (Comment != null ? Comment.hashCode() : 0);
+        result = 31 * result + (int) (AccidentId ^ (AccidentId >>> 32));
+        result = 31 * result + (int) (UserId ^ (UserId >>> 32));
+        result = 31 * result + (int) (WorkflowActionId ^ (WorkflowActionId >>> 32));
         return result;
     }
 }

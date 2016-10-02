@@ -9,66 +9,66 @@ import java.util.List;
 @Entity
 @Table(name = "AccidentCars", schema = "dbo", catalog = "IlidaDB")
 public class AccidentCarsEntity {
-    private long id;
-    private String carPlate;
-    private String damageText;
-    private String remarks;
-    private long accidentId;
-    private List<AccidentConditionsEntity> conditions;
-    private List<AccidentsEntity> accidents;
+    private long Id;
+    private String CarPlate;
+    private String DamageText;
+    private String Remarks;
+    private long AccidentId;
+    private List<AccidentConditionsEntity> AccidentConditions;
+    private List<AccidentsEntity> Accidents;
 
     @Id
     @Column(name = "Id", nullable = false)
     public long getId() {
-        return id;
+        return Id;
     }
 
     public AccidentCarsEntity setId(long id) {
-        this.id = id;
+        this.Id = id;
         return this;
     }
 
     @Basic
     @Column(name = "CarPlate", nullable = false, length = 10)
     public String getCarPlate() {
-        return carPlate;
+        return CarPlate;
     }
 
     public AccidentCarsEntity setCarPlate(String carPlate) {
-        this.carPlate = carPlate;
+        this.CarPlate = carPlate;
         return this;
     }
 
     @Basic
     @Column(name = "DamageText", nullable = true, length = 2147483647)
     public String getDamageText() {
-        return damageText;
+        return DamageText;
     }
 
     public AccidentCarsEntity setDamageText(String damageText) {
-        this.damageText = damageText;
+        this.DamageText = damageText;
         return this;
     }
 
     @Basic
     @Column(name = "Remarks", nullable = true, length = 2147483647)
     public String getRemarks() {
-        return remarks;
+        return Remarks;
     }
 
     public AccidentCarsEntity setRemarks(String remarks) {
-        this.remarks = remarks;
+        this.Remarks = remarks;
         return this;
     }
 
     @Basic
     @Column(name = "AccidentId", nullable = false)
     public long getAccidentId() {
-        return accidentId;
+        return AccidentId;
     }
 
     public AccidentCarsEntity setAccidentId(long accidentId) {
-        this.accidentId = accidentId;
+        this.AccidentId = accidentId;
         return this;
     }
 
@@ -79,43 +79,43 @@ public class AccidentCarsEntity {
 
         AccidentCarsEntity that = (AccidentCarsEntity) o;
 
-        if (id != that.id) return false;
-        if (accidentId != that.accidentId) return false;
-        if (carPlate != null ? !carPlate.equals(that.carPlate) : that.carPlate != null) return false;
-        if (damageText != null ? !damageText.equals(that.damageText) : that.damageText != null) return false;
-        if (remarks != null ? !remarks.equals(that.remarks) : that.remarks != null) return false;
+        if (Id != that.Id) return false;
+        if (AccidentId != that.AccidentId) return false;
+        if (CarPlate != null ? !CarPlate.equals(that.CarPlate) : that.CarPlate != null) return false;
+        if (DamageText != null ? !DamageText.equals(that.DamageText) : that.DamageText != null) return false;
+        if (Remarks != null ? !Remarks.equals(that.Remarks) : that.Remarks != null) return false;
 
         return true;
     }
 
     @Override
     public int hashCode() {
-        int result = (int) (id ^ (id >>> 32));
-        result = 31 * result + (carPlate != null ? carPlate.hashCode() : 0);
-        result = 31 * result + (damageText != null ? damageText.hashCode() : 0);
-        result = 31 * result + (remarks != null ? remarks.hashCode() : 0);
-        result = 31 * result + (int) (accidentId ^ (accidentId >>> 32));
+        int result = (int) (Id ^ (Id >>> 32));
+        result = 31 * result + (CarPlate != null ? CarPlate.hashCode() : 0);
+        result = 31 * result + (DamageText != null ? DamageText.hashCode() : 0);
+        result = 31 * result + (Remarks != null ? Remarks.hashCode() : 0);
+        result = 31 * result + (int) (AccidentId ^ (AccidentId >>> 32));
         return result;
     }
 
     @ManyToMany
     @JoinTable(name = "CarAccidentConditions", catalog = "IlidaDB", schema = "dbo", joinColumns = @JoinColumn(name = "AccidentCarId", referencedColumnName = "Id", nullable = false), inverseJoinColumns = @JoinColumn(name = "AccidentConditionId", referencedColumnName = "Id", nullable = false))
-    public List<AccidentConditionsEntity> getConditions() {
-        return conditions;
+    public List<AccidentConditionsEntity> getAccidentConditions() {
+        return AccidentConditions;
     }
 
-    public AccidentCarsEntity setConditions(List<AccidentConditionsEntity> conditions) {
-        this.conditions = conditions;
+    public AccidentCarsEntity setAccidentConditions(List<AccidentConditionsEntity> accidentConditions) {
+        this.AccidentConditions = accidentConditions;
         return this;
     }
 
-    @ManyToMany(mappedBy = "cars")
+    @ManyToMany(mappedBy = "accidentCars")
     public List<AccidentsEntity> getAccidents() {
-        return accidents;
+        return Accidents;
     }
 
     public AccidentCarsEntity setAccidents(List<AccidentsEntity> accidents) {
-        this.accidents = accidents;
+        this.Accidents = accidents;
         return this;
     }
 }

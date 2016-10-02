@@ -6,12 +6,12 @@ using System;
 
 namespace Ilida.Api.Client
 {
-    public interface IIlidaApi : IDisposable
-    {
-        Task<bool> AcceptAccidentAsync(AcceptAccidentRequest acceptAccidentRequest, CancellationToken token = default(CancellationToken));
-        Task<AccidentDto> CreateAccidentAsync(CreateAccidentRequest createAccidentRequest, CancellationToken token = default(CancellationToken));
-        Task<AccidentDto> GetAccidentAsync(long userId, long accidentId, CancellationToken token = default(CancellationToken));
-        Task<List<AccidentDto>> GetAccidentsAsync(long userId, CancellationToken token = default(CancellationToken));
-        Task<UserDto> LoginAsync(LoginRequest loginRequest, CancellationToken token = default(CancellationToken));
-    }
+	public interface IIlidaApi : IDisposable
+	{
+		Task<bool> AcceptAccidentAsync(AcceptAccidentRequest acceptAccidentRequest, CancellationToken token = default(CancellationToken));
+		Task<AccidentDto> CreateAccidentAsync(CreateAccidentRequest createAccidentRequest, CancellationToken token = default(CancellationToken));
+		Task<AccidentDto> GetAccidentAsync(long userId, long accidentId, CancellationToken token = default(CancellationToken));
+		Task<List<AccidentDto>> GetAccidentsAsync(long userId = 0, long statusId = 0, CancellationToken token = default(CancellationToken));
+		Task<UserDto> LoginAsync(LoginRequest loginRequest, CancellationToken token = default(CancellationToken));
+	}
 }

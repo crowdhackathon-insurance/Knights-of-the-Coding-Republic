@@ -23,6 +23,11 @@
                     return angular.fromJson(data);
                 }
             },
+            'approveIncident': {
+                method: 'POST',
+                params: {accidentId: '@accidentId'},
+                url: 'api/accident/approve/:accidentId'
+            },
             'finalAllByStatus': {
                 method: 'GET', isArray: true,
                 url: 'api/accident/status/:statusId'
