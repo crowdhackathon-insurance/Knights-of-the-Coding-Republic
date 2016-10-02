@@ -1,7 +1,6 @@
-﻿
-namespace Ilida.Api.Models
+﻿namespace Ilida.Api.Models
 {
-    public class Role
+    public class Company
     {
         public long Id { get; set; }
 

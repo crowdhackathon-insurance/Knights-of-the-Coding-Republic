@@ -9,16 +9,14 @@ namespace ilida.mobile
 	public class AccidentListViewModel : BaseViewModel
 	{
 		INavigationService _nav;
+		IClientService _client;
 		private bool _timerActive = true;
 
-		public AccidentListViewModel(INavigationService nav)
+		public AccidentListViewModel(INavigationService nav, IClientService client)
 		{
 			_nav = nav;
-			_accidents = new List<Accident>()
-			{
-				new Accident(){ AccidentId="891291", Date="11/09/2016 14:30", Status="Προς Διακανονισμο"},
-				new Accident(){ AccidentId="732291", Date="12/03/2015 11:00", Status="Ολοκληρώθηκε"}
-			};
+			_client = client;
+
 			SubmitCommand = new Command(async () => await Submit());
 			SelectCommand = new Command<Accident>(async (a) => await Select(a));
 		}
@@ -77,16 +75,26 @@ namespace ilida.mobile
 			await _nav.PushAsync(avm);
 		}
 
-		public override void Activated()
+		public override async void Activated()
 		{
 			base.Activated();
 			_timerActive = true;
 			StartTimer();
+
+			Accidents = await _client.GetAccidents();
+			//	new List<Accident>()
+			//{
+			//	new Accident(){ AccidentId="891291", Date="11/09/2016 14:30", Status="Προς Διακανονισμο"},
+			//	new Accident(){ AccidentId="732291", Date="12/03/2015 11:00", Status="Ολοκληρώθηκε"}
+			//};
 		}
 
 		public bool TimerHandle()
 		{
-
+			Task.Factory.StartNew(async () =>
+			{
+				Accidents = await _client.GetAccidents();
+			});
 			return _timerActive;
 		}
 
