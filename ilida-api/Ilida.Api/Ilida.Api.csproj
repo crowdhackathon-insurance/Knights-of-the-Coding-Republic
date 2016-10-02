@@ -162,6 +162,7 @@
     <Compile Include="Dtos\AccidentParticipantDto.cs" />
     <Compile Include="Dtos\AccidentPhotoDto.cs" />
     <Compile Include="Dtos\AccidentWitnessDto.cs" />
+    <Compile Include="Dtos\CreateAccidentRequest.cs" />
     <Compile Include="Dtos\LoginRequest.cs" />
     <Compile Include="Dtos\UserDto.cs" />
     <Compile Include="Global.asax.cs">
@@ -170,6 +171,7 @@
     <Compile Include="Mappers\AccidentActionDtoMapper.cs" />
     <Compile Include="Mappers\AccidentCarDtoMapper.cs" />
     <Compile Include="Mappers\AccidentDtoMapper.cs" />
+    <Compile Include="Mappers\AccidentFromCreateRequestMapper.cs" />
     <Compile Include="Mappers\AccidentParticipantDtoMapper.cs" />
     <Compile Include="Mappers\AccidentPhotoDtoMapper.cs" />
     <Compile Include="Mappers\AccidentWitnessDtoMapper.cs" />
