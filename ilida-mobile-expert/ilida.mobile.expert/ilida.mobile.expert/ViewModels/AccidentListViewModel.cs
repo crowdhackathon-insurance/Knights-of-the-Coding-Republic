@@ -86,6 +86,7 @@ namespace ilida.mobile.expert
 		public override async void Activated()
 		{
 			base.Activated();
+			StartTimer();
 			Accidents = await _client.GetAccidents();
 		}
 
@@ -102,6 +103,20 @@ namespace ilida.mobile.expert
 			//	Status = a.Status
 			//};
 			//await _nav.PushAsync(avm);
+		}
+
+		public bool TimerHandle()
+		{
+			Task.Factory.StartNew(async () =>
+			{
+				Accidents = await _client.GetAccidents();
+			});
+			return true;
+		}
+
+		public void StartTimer()
+		{
+			Xamarin.Forms.Device.StartTimer(new TimeSpan(0, 0, 5), () => TimerHandle());
 		}
 
 	}

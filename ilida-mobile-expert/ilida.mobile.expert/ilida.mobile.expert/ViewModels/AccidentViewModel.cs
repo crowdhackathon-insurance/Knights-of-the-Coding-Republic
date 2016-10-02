@@ -17,7 +17,7 @@ namespace ilida.mobile.expert
 			_nav = nav;
 			_client = client;
 			ShowImagesCommand = new Command(async () => await ShowImages());
-			AcceptCommand = new Command(asyn() => await Accept());
+			AcceptCommand = new Command(async () => await Accept());
 		}
 
 		public ICommand ShowImagesCommand { get; set; }
