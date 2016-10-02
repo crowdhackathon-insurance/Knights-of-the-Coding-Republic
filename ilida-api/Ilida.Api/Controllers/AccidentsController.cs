@@ -32,12 +32,17 @@ namespace Ilida.Api.Controllers
         }
 
         // GET: api/Accidents
-        public IEnumerable<AccidentDto> GetAccidents(long userId = 0)
+        public IEnumerable<AccidentDto> GetAccidents(long userId = 0, long workflowStatusId = 0)
         {
             var query = db.Accidents.AsQueryable();
             if (userId > 0)
             {
                 query = query.Where(x => x.UserId == userId);
+            }
+
+            if (workflowStatusId > 0)
+            {
+                query = query.Where(x => x.WorkflowStatusId == workflowStatusId);
             }
 
             return _accidentDtoMapper.Map(query.ToList());
