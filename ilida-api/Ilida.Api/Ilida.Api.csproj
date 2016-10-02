@@ -143,11 +143,22 @@
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\RolesController.cs" />
     <Compile Include="Controllers\UsersController.cs" />
+    <Compile Include="Dtos\AccidentActionDto.cs" />
+    <Compile Include="Dtos\AccidentCarDto.cs" />
+    <Compile Include="Dtos\AccidentDto.cs" />
+    <Compile Include="Dtos\AccidentParticipantDto.cs" />
+    <Compile Include="Dtos\AccidentPhotoDto.cs" />
+    <Compile Include="Dtos\AccidentWitnessDto.cs" />
     <Compile Include="Dtos\LoginRequest.cs" />
     <Compile Include="Dtos\UserDto.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Mappers\AccidentActionDtoMapper.cs" />
+    <Compile Include="Mappers\AccidentCarDtoMapper.cs" />
+    <Compile Include="Mappers\AccidentParticipantDtoMapper.cs" />
+    <Compile Include="Mappers\AccidentPhotoDtoMapper.cs" />
+    <Compile Include="Mappers\AccidentWitnessDtoMapper.cs" />
     <Compile Include="Mappers\BaseMapper.cs" />
     <Compile Include="Mappers\IMapper.cs" />
     <Compile Include="Mappers\UserDtoMapper.cs" />
