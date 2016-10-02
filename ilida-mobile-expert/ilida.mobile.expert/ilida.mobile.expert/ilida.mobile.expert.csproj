@@ -58,7 +58,6 @@
     </Compile>
     <Compile Include="ViewModels\LoginViewModel.cs" />
     <Compile Include="ViewModels\AccidentListViewModel.cs" />
-    <Compile Include="Models\Accident.cs" />
     <Compile Include="Views\AccidentListView.xaml.cs">
       <DependentUpon>AccidentListView.xaml</DependentUpon>
     </Compile>
@@ -66,6 +65,30 @@
       <DependentUpon>ImagesView.xaml</DependentUpon>
     </Compile>
     <Compile Include="ViewModels\ImagesViewModel.cs" />
+    <Compile Include="DTOs\AccidentActionDto.cs" />
+    <Compile Include="DTOs\AccidentCarDto.cs" />
+    <Compile Include="DTOs\AccidentDto.cs" />
+    <Compile Include="DTOs\AccidentParticipantDto.cs" />
+    <Compile Include="DTOs\AccidentPhotoDto.cs" />
+    <Compile Include="DTOs\AccidentWitnessDto.cs" />
+    <Compile Include="DTOs\LoginRequest.cs" />
+    <Compile Include="DTOs\UserDto.cs" />
+    <Compile Include="Models\AccidentAction.cs" />
+    <Compile Include="Models\AccidentCar.cs" />
+    <Compile Include="Models\AccidentCompany.cs" />
+    <Compile Include="Models\AccidentCondition.cs" />
+    <Compile Include="Models\AccidentParticipant.cs" />
+    <Compile Include="Models\AccidentPhoto.cs" />
+    <Compile Include="Models\AccidentWitness.cs" />
+    <Compile Include="Models\CarAccidentCondition.cs" />
+    <Compile Include="Models\Company.cs" />
+    <Compile Include="Models\Role.cs" />
+    <Compile Include="Models\User.cs" />
+    <Compile Include="Models\UserRole.cs" />
+    <Compile Include="Models\WorkflowAction.cs" />
+    <Compile Include="Models\WorkflowStatus.cs" />
+    <Compile Include="ViewModels\AccidentViewModel.cs" />
+    <Compile Include="Models\Accident.cs" />
   </ItemGroup>
   <ItemGroup>    
     <None Include="packages.config" />
@@ -75,6 +98,7 @@
     <Folder Include="Views\" />
     <Folder Include="ViewModels\" />
     <Folder Include="Models\" />
+    <Folder Include="DTOs\" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Xamarin.Forms.Core">
