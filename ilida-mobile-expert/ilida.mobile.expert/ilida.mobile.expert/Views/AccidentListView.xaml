@@ -8,31 +8,71 @@
 			<RowDefinition Height="*" />
 			<RowDefinition Height="50" />
 		</Grid.RowDefinitions>
-		<Grid Grid.Row="0" Margin="5">
+		<!--<Grid Grid.Row="0" Margin="5">
 			<Grid.ColumnDefinitions>
 				<ColumnDefinition />
 				<ColumnDefinition />
 				<ColumnDefinition />
+				<ColumnDefinition />
+				<ColumnDefinition />
+				<ColumnDefinition />
 			</Grid.ColumnDefinitions>
-			<Label Grid.Column="0" Text="#" HorizontalOptions="Center" />
-			<Label Grid.Column="1" Text="Ημερομηνία" HorizontalOptions="Center" />
-			<Label Grid.Column="2" Text="Κατάσταση" HorizontalOptions="Center" />
-		</Grid>
-		<ListView Grid.Row="1" ItemsSource="{Binding Accidents}" SeparatorVisibility="None" SelectedItem="{Binding SelectedItem,Mode=TwoWay}">
+			<Label Grid.Column="0" Text="#" HorizontalOptions="Center" VerticalOptions="Center" FontSize="11" />
+			<Label Grid.Column="1" Text="Ημερομηνία" HorizontalOptions="Center" VerticalOptions="Center" FontSize="11" />
+			<Label Grid.Column="2" Text="Οχήματα" HorizontalOptions="Center" VerticalOptions="Center" FontSize="11" />
+			<Label Grid.Column="3" Text="Ασφαλισμένοι" HorizontalOptions="Center" VerticalOptions="Center" FontSize="11" />
+			<Label Grid.Column="4" Text="Οδηγοί" HorizontalOptions="Center" VerticalOptions="Center" FontSize="11" />
+			<Label Grid.Column="5" Text="Ασφαλιστικές Εταιρείες" HorizontalOptions="Center" VerticalOptions="Center" FontSize="11" />
+		</Grid>-->
+		<ListView Grid.Row="1" RowHeight="200" ItemsSource="{Binding Accidents}" SeparatorVisibility="None" SelectedItem="{Binding SelectedItem,Mode=TwoWay}">
 			<ListView.ItemTemplate>
 				<DataTemplate>
-					<ViewCell>						
-						<StackLayout BackgroundColor="#eee" Orientation="Vertical">
+					<ViewCell>
+						<StackLayout Orientation="Vertical">
 							<Grid Margin="5" VerticalOptions="Center">
 								<Grid.ColumnDefinitions>
-									<ColumnDefinition />
-									<ColumnDefinition />
-									<ColumnDefinition />
+									<ColumnDefinition Width="*" />
+									<ColumnDefinition Width="*" />
+									<ColumnDefinition Width="*" />
+									<ColumnDefinition Width="*" />
+									<ColumnDefinition Width="*" />
+									<ColumnDefinition Width="*" />
 								</Grid.ColumnDefinitions>
-								<Label Grid.Column="0" Text="{Binding AccidentId}" FontSize="10" HorizontalOptions="Center" VerticalOptions="Center" />
-								<Label Grid.Column="1" Text="{Binding Date}" FontSize="10" HorizontalOptions="Center" VerticalOptions="Center" />
-								<Label Grid.Column="2" Text="{Binding Status}" FontSize="10" HorizontalOptions="Center" VerticalOptions="Center" />
+								<Grid.RowDefinitions>
+									<RowDefinition Height="*" />
+									<RowDefinition Height="*" />
+									<RowDefinition Height="*" />
+									<RowDefinition Height="*" />
+								</Grid.RowDefinitions>
+								<Label Grid.Column="0" Text="#" HorizontalOptions="Center" VerticalOptions="Center" FontSize="11" FontAttributes="Bold" />
+								<Label Grid.Column="1" Text="Ημερομηνία" HorizontalOptions="Center" VerticalOptions="Center" FontSize="11" FontAttributes="Bold" />
+								<Label Grid.Column="2" Text="Οχήματα" HorizontalOptions="Center" VerticalOptions="Center" FontSize="11" FontAttributes="Bold" />
+								<Label Grid.Column="3" Text="Ασφαλισμένοι" HorizontalOptions="Center" VerticalOptions="Center" FontSize="11" FontAttributes="Bold" />
+								<Label Grid.Column="4" Text="Οδηγοί" HorizontalOptions="Center" VerticalOptions="Center" FontSize="11" FontAttributes="Bold" />
+								<Label Grid.Column="5" Text="Ασφαλιστικές Εταιρείες" HorizontalOptions="Center" VerticalOptions="Center" FontSize="11" FontAttributes="Bold" />
+
+								<Label Grid.Row="1" Grid.Column="0" Text="{Binding AccidentId}" FontSize="10" HorizontalOptions="Center" VerticalOptions="Center" />
+								<Label Grid.Row="1" Grid.Column="1" Text="{Binding Date}" FontSize="10" HorizontalOptions="Center" VerticalOptions="Center" />
+								<Label Grid.Row="1" Grid.Column="2" Text="{Binding VehiclesString}" FontSize="10" HorizontalOptions="Center" VerticalOptions="Center" />
+								<Label Grid.Row="1" Grid.Column="3" Text="{Binding InsuredPeopleString}" FontSize="10" HorizontalOptions="Center" VerticalOptions="Center" />
+								<Label Grid.Row="1" Grid.Column="4" Text="{Binding DriversString}" FontSize="10" HorizontalOptions="Center" VerticalOptions="Center" />
+								<Label Grid.Row="1" Grid.Column="5" Text="{Binding InsuranceCompaniesString}" FontSize="10" HorizontalOptions="Center" VerticalOptions="Center" />
+
+								<Label Grid.Row="2" Grid.Column="0" Text=" " HorizontalOptions="Center" VerticalOptions="Center" FontSize="11" FontAttributes="Bold" />
+								<Label Grid.Row="2" Grid.Column="1" Text="Φωτογραφίες" HorizontalOptions="Center" VerticalOptions="Center" FontSize="11" FontAttributes="Bold" />
+								<Label Grid.Row="2" Grid.Column="2" Text="Σοβ. Τραυμ." HorizontalOptions="Center" VerticalOptions="Center" FontSize="11" FontAttributes="Bold" />
+								<Label Grid.Row="2" Grid.Column="3" Text="Διεύθυνση" HorizontalOptions="Center" VerticalOptions="Center" FontSize="11" FontAttributes="Bold" />
+								<Label Grid.Row="2" Grid.Column="4" Text="Κατάσταση" HorizontalOptions="Center" VerticalOptions="Center" FontSize="11" FontAttributes="Bold" />
+								<Label Grid.Row="2" Grid.Column="5" Text="Ενέργεια" HorizontalOptions="Center" VerticalOptions="Center" FontSize="11" FontAttributes="Bold" />
+
+								<Label Grid.Row="3" Grid.Column="0" Text=" " FontSize="10" HorizontalOptions="Center" VerticalOptions="Center" />
+								<Button Grid.Row="3" Grid.Column="1" Image="green_camera.png" FontSize="10" HorizontalOptions="Center" VerticalOptions="Center" Command="{Binding ShowImagesCommand}"/>
+								<Label Grid.Row="3" Grid.Column="2" Text="{Binding HeavilyInjured}" FontSize="10" HorizontalOptions="Center" VerticalOptions="Center" />
+								<Label Grid.Row="3" Grid.Column="3" Text="{Binding Address}" FontSize="10" HorizontalOptions="Center" VerticalOptions="Center" />
+								<Label Grid.Row="3" Grid.Column="4" Text="{Binding Status}" FontSize="10" HorizontalOptions="Center" VerticalOptions="Center" />
+								<Button Grid.Row="3" Grid.Column="5" Text="Αποδοχή" Scale="0.8" FontSize="10" BackgroundColor="#5CB75C" TextColor="White" HorizontalOptions="Fill" VerticalOptions="Center" />
 							</Grid>
+							<BoxView HeightRequest="2" BackgroundColor="Black" />
 						</StackLayout>
 					</ViewCell>
 				</DataTemplate>

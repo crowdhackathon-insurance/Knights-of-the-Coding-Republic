@@ -15,8 +15,30 @@ namespace ilida.mobile.expert
 			_nav = nav;
 			_accidents = new List<Accident>()
 			{
-				new Accident(){ AccidentId="891291", Date="11/09/2016 14:30", Status="Προς Διακανονισμο"},
-				new Accident(){ AccidentId="732291", Date="12/03/2015 11:00", Status="Ολοκληρώθηκε"}
+				new Accident(_nav){
+					AccidentId="891291",
+					Date="11/09/2016 14:30",
+					Status="Προς Ανάληψη από Εμπειρογνώμονα",
+					Address="Πειραιώς 100, Αθήνα",
+					Drivers=new List<string>(){"Νικολάου Νικόλαος","Γεωργίου Γεώργιος"},
+					HeavilyInjured="ΝΑΙ",
+					InsuredPeople=new List<string>(){"Νικολάου Νικόλαος","Γεωργίου Γεώργιος"},
+					InsuranceCompanies=new List<string>(){"Άλφα Ασφαλιστική","Ωμέγα Ασφαλιστική"},
+					Vehicles=new List<string>(){"ZMI1543","KIA1231"},
+					Photos=new List<string>(){"http://www.caraccidentlawyerdc.com/wp-content/uploads/2013/11/Car-Accident.jpg","http://i.telegraph.co.uk/multimedia/archive/01709/car-accident_1709879b.jpg"}
+				},
+				new Accident(_nav){
+					AccidentId="732291",
+					Date="12/03/2015 11:00",
+					Status="Ολοκληρώθηκε",
+					Address="Πειραιώς 100, Αθήνα",
+					Drivers=new List<string>(){"Νικολάου Νικόλαος","Γεωργίου Γεώργιος"},
+					HeavilyInjured="ΝΑΙ",
+					InsuredPeople=new List<string>(){"Νικολάου Νικόλαος","Γεωργίου Γεώργιος"},
+					InsuranceCompanies=new List<string>(){"Άλφα Ασφαλιστική","Ωμέγα Ασφαλιστική"},
+					Vehicles=new List<string>(){"ZMI1543","KIA1231"},
+					Photos=new List<string>(){"http://www.caraccidentlawyerdc.com/wp-content/uploads/2013/11/Car-Accident.jpg","http://i.telegraph.co.uk/multimedia/archive/01709/car-accident_1709879b.jpg"}
+				}
 			};
 			SubmitCommand = new Command(async () => await Submit());
 			SelectCommand = new Command<Accident>(async (a) => await Select(a));

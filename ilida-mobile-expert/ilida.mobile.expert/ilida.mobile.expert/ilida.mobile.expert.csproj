@@ -38,6 +38,9 @@
     <EmbeddedResource Include="Views\NavPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
+    <EmbeddedResource Include="Views\ImagesView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App.xaml.cs">
@@ -47,18 +50,22 @@
     <Compile Include="Services\INavigationService.cs" />
     <Compile Include="Services\NavigationService.cs" />
     <Compile Include="ViewModels\BaseViewModel.cs" />
-    <Compile Include="Views\LoginView.xaml.cs" >
+    <Compile Include="Views\LoginView.xaml.cs">
     <DependentUpon>LoginView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\NavPage.xaml.cs" >
-<DependentUpon>NavPage.xaml</DependentUpon>
+    <Compile Include="Views\NavPage.xaml.cs">
+      <DependentUpon>NavPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="ViewModels\LoginViewModel.cs" />
     <Compile Include="ViewModels\AccidentListViewModel.cs" />
     <Compile Include="Models\Accident.cs" />
-    <Compile Include="Views\AccidentListView.xaml.cs" >
-<DependentUpon>AccidentListView.xaml</DependentUpon>
+    <Compile Include="Views\AccidentListView.xaml.cs">
+      <DependentUpon>AccidentListView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\ImagesView.xaml.cs">
+      <DependentUpon>ImagesView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ViewModels\ImagesViewModel.cs" />
   </ItemGroup>
   <ItemGroup>    
     <None Include="packages.config" />

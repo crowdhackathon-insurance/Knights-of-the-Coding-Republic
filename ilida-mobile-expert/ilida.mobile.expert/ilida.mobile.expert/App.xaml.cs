@@ -17,6 +17,7 @@ namespace ilida.mobile.expert
 			_navigationService = new NavigationService(_navigationPage.Navigation);
 			_navigationService.Register(new LoginViewModel(_navigationService), _root);
 			_navigationService.Register(new AccidentListViewModel(_navigationService), new AccidentListView());
+			_navigationService.Register(new ImagesViewModel(_navigationService), new ImagesView());
 
 			//MainPage = _navigationService.GetView<LoginViewModel>();
 			MainPage = _navigationPage;
