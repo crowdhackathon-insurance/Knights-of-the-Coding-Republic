@@ -45,10 +45,11 @@ namespace Ilida.Api.Controllers
 
         // GET: api/Accidents/5
         [ResponseType(typeof(AccidentDto))]
-        public async Task<IHttpActionResult> GetAccident(long id)
+        public async Task<IHttpActionResult> GetAccident(long id, long userId = 0)
         {
             Accident accident = await db.Accidents.FindAsync(id);
-            if (accident == null)
+            if (accident == null ||
+                (userId > 0 && accident.UserId != userId))
             {
                 return NotFound();
             }
