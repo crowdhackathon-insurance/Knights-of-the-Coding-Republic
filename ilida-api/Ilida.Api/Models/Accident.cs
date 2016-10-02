@@ -13,6 +13,7 @@ namespace Ilida.Api.Models
             AccidentPhotos = new List<AccidentPhoto>();
             AccidentCompanies = new List<AccidentCompany>();
             AccidentWitnesses = new List<AccidentWitness>();
+            AccidentActions = new List<AccidentAction>();
         }
 
         public long Id { get; set; }

@@ -84,6 +84,17 @@ namespace Ilida.Api.Controllers
         [ResponseType(typeof(AccidentDto))]
         public async Task<IHttpActionResult> PostAccident(Accident accident)
         {
+            accident.WorkflowStatus = await db.WorkflowStatuses.FindAsync(2);
+            accident.WorkflowStatusId = accident.WorkflowStatus.Id;
+            accident.User = await db.Users.FindAsync(accident.UserId);
+
+            // Verify user exists
+            if (accident.User == null)
+            {
+                ModelState.AddModelError("UserId", "Specified user does not exist");
+                return BadRequest(ModelState);
+            }
+
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
@@ -92,7 +103,59 @@ namespace Ilida.Api.Controllers
             db.Accidents.Add(accident);
             await db.SaveChangesAsync();
 
+            var accidentAction = new AccidentAction
+            {
+                Timestamp = DateTime.UtcNow,
+                UserId = accident.UserId,
+                WorkflowActionId = 1,
+                WorkflowAction = await db.WorkflowActions.FindAsync(1),
+                Accident = accident,
+                PreviousWorkflowStatusId = 1,
+                NextWorkflowStatusId = 3,
+                Comment = "Αριθμός ατυχήματος: " + accident.Id
+            };
+
+            accident.AccidentActions.Add(accidentAction);
+
+            db.Entry(accident).State = EntityState.Modified;
+            await db.SaveChangesAsync();
+
+            //accident = await db.Accidents.FirstOrDefaultAsync(x => x.Id == accident.Id);
+
             return CreatedAtRoute("DefaultApi", new { id = accident.Id }, _accidentDtoMapper.Map(accident));
+        }
+
+        // POST: api/Accidents/5/processed
+        [ResponseType(typeof(AccidentDto))]
+        public async Task<IHttpActionResult> ProcessAccident(long id, long actionFromUserId)
+        {
+            Accident accident = await db.Accidents.FindAsync(id);
+            if (accident == null)
+            {
+                return NotFound();
+            }
+
+            var lastAction = accident.AccidentActions.Last();
+
+            var action = new AccidentAction
+            {
+                Timestamp = DateTime.UtcNow,
+                UserId = accident.UserId,
+                WorkflowActionId = 2,
+                WorkflowAction = await db.WorkflowActions.FindAsync(2),
+                Accident = accident,
+                PreviousWorkflowStatusId = lastAction.WorkflowActionId,
+                NextWorkflowStatusId = 3,
+                Comment = "Από: " + actionFromUserId
+            };
+            accident.AccidentActions.Add(action);
+            accident.WorkflowStatusId++;
+            accident.WorkflowStatus = await db.WorkflowStatuses.FindAsync(accident.WorkflowStatusId);
+
+            db.Entry(accident).State = EntityState.Modified;
+            await db.SaveChangesAsync();
+
+            return Ok(_accidentDtoMapper.Map(accident));
         }
 
         // DELETE: api/Accidents/5

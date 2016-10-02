@@ -24,6 +24,8 @@ namespace Ilida.Api.Dtos
 
         public WorkflowStatus WorkflowStatus { get; set; }
 
+        public UserDto User { get; set; }
+
         public IEnumerable<AccidentParticipantDto> AccidentParticipants { get; set; }
 
         public IEnumerable<AccidentCarDto> AccidentCars { get; set; }
