@@ -156,6 +156,7 @@
     </Compile>
     <Compile Include="Mappers\AccidentActionDtoMapper.cs" />
     <Compile Include="Mappers\AccidentCarDtoMapper.cs" />
+    <Compile Include="Mappers\AccidentDtoMapper.cs" />
     <Compile Include="Mappers\AccidentParticipantDtoMapper.cs" />
     <Compile Include="Mappers\AccidentPhotoDtoMapper.cs" />
     <Compile Include="Mappers\AccidentWitnessDtoMapper.cs" />

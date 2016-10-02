@@ -24,16 +24,16 @@ namespace Ilida.Api.Dtos
 
         public WorkflowStatus WorkflowStatus { get; set; }
 
-        public ICollection<AccidentParticipant> AccidentParticipants { get; set; }
+        public IEnumerable<AccidentParticipantDto> AccidentParticipants { get; set; }
 
-        public ICollection<AccidentCarDto> AccidentCars { get; set; }
+        public IEnumerable<AccidentCarDto> AccidentCars { get; set; }
 
-        public ICollection<AccidentPhotoDto> AccidentPhotos { get; set; }
+        public IEnumerable<AccidentPhotoDto> AccidentPhotos { get; set; }
 
-        public ICollection<Company> AccidentCompanies { get; set; }
+        public IEnumerable<Company> AccidentCompanies { get; set; }
 
-        public ICollection<AccidentWitnessDto> AccidentWitnesses { get; set; }
+        public IEnumerable<AccidentWitnessDto> AccidentWitnesses { get; set; }
 
-        public ICollection<AccidentActionDto> AccidentActions { get; set; }
+        public IEnumerable<AccidentActionDto> AccidentActions { get; set; }
     }
 }
