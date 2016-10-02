@@ -156,6 +156,7 @@
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\RolesController.cs" />
     <Compile Include="Controllers\UsersController.cs" />
+    <Compile Include="Dtos\AcceptAccidentRequest.cs" />
     <Compile Include="Dtos\AccidentActionDto.cs" />
     <Compile Include="Dtos\AccidentCarDto.cs" />
     <Compile Include="Dtos\AccidentDto.cs" />
@@ -163,7 +164,9 @@
     <Compile Include="Dtos\AccidentPhotoDto.cs" />
     <Compile Include="Dtos\AccidentWitnessDto.cs" />
     <Compile Include="Dtos\CreateAccidentRequest.cs" />
+    <Compile Include="Dtos\DoActionOnAccidentRequest.cs" />
     <Compile Include="Dtos\LoginRequest.cs" />
+    <Compile Include="Dtos\ProcessAccidentRequest.cs" />
     <Compile Include="Dtos\UserDto.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
