@@ -28,8 +28,8 @@ namespace ilida.mobile.expert
 
 		public async Task<ICollection<AccidentViewModel>> GetAccidents()
 		{
-			var accidents = await _api.GetAccidentsAsync(_currentUser.Id);
-			return accidents.Select(a => new AccidentViewModel(_nav,this)
+			var accidents = await _api.GetAccidentsAsync(statusId: 3);
+			return accidents.Select(a => new AccidentViewModel(_nav, this)
 			{
 				AccidentId = a.Id,
 				Date = a.OccuredOn.ToString(),
