@@ -29,7 +29,7 @@ namespace Ilida.Api.Controllers
         // GET: api/Accidents
         public IEnumerable<AccidentDto> GetAccidents()
         {
-            return _accidentDtoMapper.Map(db.Accidents);
+            return _accidentDtoMapper.Map(db.Accidents.ToList());
         }
 
         // GET: api/Accidents/5
