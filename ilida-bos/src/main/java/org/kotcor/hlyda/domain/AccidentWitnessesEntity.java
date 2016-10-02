@@ -8,40 +8,40 @@ import javax.persistence.*;
 @Entity
 @Table(name = "AccidentWitnesses", schema = "dbo", catalog = "IlidaDB")
 public class AccidentWitnessesEntity {
-    private long id;
-    private String idCard;
-    private long accidentId;
+    private long Id;
+    private String IdCard;
+    private long AccidentId;
 
     @Id
     @Column(name = "Id", nullable = false)
     public long getId() {
-        return id;
+        return Id;
     }
 
     public AccidentWitnessesEntity setId(long id) {
-        this.id = id;
+        this.Id = id;
         return this;
     }
 
     @Basic
     @Column(name = "IdCard", nullable = false, length = 10)
     public String getIdCard() {
-        return idCard;
+        return IdCard;
     }
 
     public AccidentWitnessesEntity setIdCard(String idCard) {
-        this.idCard = idCard;
+        this.IdCard = idCard;
         return this;
     }
 
     @Basic
     @Column(name = "AccidentId", nullable = false)
     public long getAccidentId() {
-        return accidentId;
+        return AccidentId;
     }
 
     public AccidentWitnessesEntity setAccidentId(long accidentId) {
-        this.accidentId = accidentId;
+        this.AccidentId = accidentId;
         return this;
     }
 
@@ -52,18 +52,18 @@ public class AccidentWitnessesEntity {
 
         AccidentWitnessesEntity that = (AccidentWitnessesEntity) o;
 
-        if (id != that.id) return false;
-        if (accidentId != that.accidentId) return false;
-        if (idCard != null ? !idCard.equals(that.idCard) : that.idCard != null) return false;
+        if (Id != that.Id) return false;
+        if (AccidentId != that.AccidentId) return false;
+        if (IdCard != null ? !IdCard.equals(that.IdCard) : that.IdCard != null) return false;
 
         return true;
     }
 
     @Override
     public int hashCode() {
-        int result = (int) (id ^ (id >>> 32));
-        result = 31 * result + (idCard != null ? idCard.hashCode() : 0);
-        result = 31 * result + (int) (accidentId ^ (accidentId >>> 32));
+        int result = (int) (Id ^ (Id >>> 32));
+        result = 31 * result + (IdCard != null ? IdCard.hashCode() : 0);
+        result = 31 * result + (int) (AccidentId ^ (AccidentId >>> 32));
         return result;
     }
 }

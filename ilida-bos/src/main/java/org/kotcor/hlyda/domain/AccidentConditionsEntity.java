@@ -9,29 +9,29 @@ import java.util.List;
 @Entity
 @Table(name = "AccidentConditions", schema = "dbo", catalog = "IlidaDB")
 public class AccidentConditionsEntity {
-    private long id;
-    private String description;
-    private List<AccidentCarsEntity> cars;
+    private long Id;
+    private String Description;
+    private List<AccidentCarsEntity> AccidentCars;
 
     @Id
     @Column(name = "Id", nullable = false)
     public long getId() {
-        return id;
+        return Id;
     }
 
     public AccidentConditionsEntity setId(long id) {
-        this.id = id;
+        this.Id = id;
         return this;
     }
 
     @Basic
     @Column(name = "Description", nullable = false, length = 2147483647)
     public String getDescription() {
-        return description;
+        return Description;
     }
 
     public AccidentConditionsEntity setDescription(String description) {
-        this.description = description;
+        this.Description = description;
         return this;
     }
 
@@ -42,26 +42,26 @@ public class AccidentConditionsEntity {
 
         AccidentConditionsEntity that = (AccidentConditionsEntity) o;
 
-        if (id != that.id) return false;
-        if (description != null ? !description.equals(that.description) : that.description != null) return false;
+        if (Id != that.Id) return false;
+        if (Description != null ? !Description.equals(that.Description) : that.Description != null) return false;
 
         return true;
     }
 
     @Override
     public int hashCode() {
-        int result = (int) (id ^ (id >>> 32));
-        result = 31 * result + (description != null ? description.hashCode() : 0);
+        int result = (int) (Id ^ (Id >>> 32));
+        result = 31 * result + (Description != null ? Description.hashCode() : 0);
         return result;
     }
 
-    @ManyToMany(mappedBy = "conditions")
-    public List<AccidentCarsEntity> getCars() {
-        return cars;
+    @ManyToMany(mappedBy = "accidentConditions")
+    public List<AccidentCarsEntity> getAccidentCars() {
+        return AccidentCars;
     }
 
-    public AccidentConditionsEntity setCars(List<AccidentCarsEntity> cars) {
-        this.cars = cars;
+    public AccidentConditionsEntity setAccidentCars(List<AccidentCarsEntity> accidentCars) {
+        this.AccidentCars = accidentCars;
         return this;
     }
 }

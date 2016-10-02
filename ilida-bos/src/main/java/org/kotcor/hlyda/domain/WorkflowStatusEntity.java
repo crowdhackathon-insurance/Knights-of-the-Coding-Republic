@@ -8,28 +8,28 @@ import javax.persistence.*;
 @Entity
 @Table(name = "WorkflowStatus", schema = "dbo", catalog = "IlidaDB")
 public class WorkflowStatusEntity {
-    private long id;
-    private String description;
+    private long Id;
+    private String Description;
 
     @Id
     @Column(name = "Id", nullable = false)
     public long getId() {
-        return id;
+        return Id;
     }
 
     public WorkflowStatusEntity setId(long id) {
-        this.id = id;
+        this.Id = id;
         return this;
     }
 
     @Basic
     @Column(name = "Description", nullable = false, length = 255)
     public String getDescription() {
-        return description;
+        return Description;
     }
 
     public WorkflowStatusEntity setDescription(String description) {
-        this.description = description;
+        this.Description = description;
         return this;
     }
 
@@ -40,16 +40,16 @@ public class WorkflowStatusEntity {
 
         WorkflowStatusEntity that = (WorkflowStatusEntity) o;
 
-        if (id != that.id) return false;
-        if (description != null ? !description.equals(that.description) : that.description != null) return false;
+        if (Id != that.Id) return false;
+        if (Description != null ? !Description.equals(that.Description) : that.Description != null) return false;
 
         return true;
     }
 
     @Override
     public int hashCode() {
-        int result = (int) (id ^ (id >>> 32));
-        result = 31 * result + (description != null ? description.hashCode() : 0);
+        int result = (int) (Id ^ (Id >>> 32));
+        result = 31 * result + (Description != null ? Description.hashCode() : 0);
         return result;
     }
 }

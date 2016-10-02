@@ -1,0 +1,36 @@
+<div class="table-responsive">
+    <h2>Παρακολούθηση Περιστατικών</h2>
+    <jhi-alert></jhi-alert>
+    <jhi-alert-error></jhi-alert-error>
+
+    <table class="table table-condensed table-striped table-bordered">
+        <thead>
+        <tr title="Παρακολούθηση Περιστατικών">
+            <th><span>#</span></th>
+            <th><span>Ημ/νία & Ωρα</span></th>
+            <th><span>Οχήματα</span></th>
+            <th><span>Ασφαλισμένοι</span></th>
+            <th><span>Οδηγοί</span></th>
+            <th><span>Σοβ.Τραυμ</span></th>
+            <th><span>Διεύθυνση</span></th>
+            <th><span>Φωτογραφίες</span></th>
+            <th><span>Κατάσταση</span></th>
+            <th><span>Ενέργεια</span></th>
+        </tr>
+        </thead>
+
+        <tr ng-repeat="accident in vm.accidents | orderBy:id">
+            <td>{{accident.id}}</td>
+            <td>{{vm.dateTimeView(accident)}}</td>
+            <td>{{vm.vehiclesView(accident)}}</td>
+            <td>{{vm.insuredClients(accident)}}</td>
+            <td>{{vm.insuredClients(accident)}}</td>
+            <td>{{vm.injuriesView(accident)}}</td>
+            <td>{{vm.addressView(accident)}}</td>
+            <td ng-click="vm.viewPhoto(accident)" class="glyphicon glyphicon-camera" style="width: 100%; text-align: center;"></td>
+            <td>{{vm.statusView(accident)}}</td>
+            <td ng-click="vm.approveAccident(accident)">{{vm.actionView()}}</td>
+        </tr>
+    </table>
+</div>
+

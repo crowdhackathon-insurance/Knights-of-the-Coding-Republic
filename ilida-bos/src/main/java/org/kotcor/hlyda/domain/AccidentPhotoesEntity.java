@@ -8,40 +8,40 @@ import javax.persistence.*;
 @Entity
 @Table(name = "AccidentPhotoes", schema = "dbo", catalog = "IlidaDB")
 public class AccidentPhotoesEntity {
-    private long id;
-    private String url;
-    private long accidentId;
+    private long Id;
+    private String Url;
+    private long AccidentId;
 
     @Id
     @Column(name = "Id", nullable = false)
     public long getId() {
-        return id;
+        return Id;
     }
 
     public AccidentPhotoesEntity setId(long id) {
-        this.id = id;
+        this.Id = id;
         return this;
     }
 
     @Basic
     @Column(name = "Url", nullable = false, length = 2147483647)
     public String getUrl() {
-        return url;
+        return Url;
     }
 
     public AccidentPhotoesEntity setUrl(String url) {
-        this.url = url;
+        this.Url = url;
         return this;
     }
 
     @Basic
     @Column(name = "AccidentId", nullable = false)
     public long getAccidentId() {
-        return accidentId;
+        return AccidentId;
     }
 
     public AccidentPhotoesEntity setAccidentId(long accidentId) {
-        this.accidentId = accidentId;
+        this.AccidentId = accidentId;
         return this;
     }
 
@@ -52,18 +52,18 @@ public class AccidentPhotoesEntity {
 
         AccidentPhotoesEntity that = (AccidentPhotoesEntity) o;
 
-        if (id != that.id) return false;
-        if (accidentId != that.accidentId) return false;
-        if (url != null ? !url.equals(that.url) : that.url != null) return false;
+        if (Id != that.Id) return false;
+        if (AccidentId != that.AccidentId) return false;
+        if (Url != null ? !Url.equals(that.Url) : that.Url != null) return false;
 
         return true;
     }
 
     @Override
     public int hashCode() {
-        int result = (int) (id ^ (id >>> 32));
-        result = 31 * result + (url != null ? url.hashCode() : 0);
-        result = 31 * result + (int) (accidentId ^ (accidentId >>> 32));
+        int result = (int) (Id ^ (Id >>> 32));
+        result = 31 * result + (Url != null ? Url.hashCode() : 0);
+        result = 31 * result + (int) (AccidentId ^ (AccidentId >>> 32));
         return result;
     }
 }
