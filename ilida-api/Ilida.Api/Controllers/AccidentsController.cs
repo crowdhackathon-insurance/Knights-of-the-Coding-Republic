@@ -42,8 +42,9 @@ namespace Ilida.Api.Controllers
 
             if (workflowStatusId > 0)
             {
-                query = query.Where(x => x.WorkflowStatusId == workflowStatusId);
+                query = query.Where(x => x.WorkflowStatusId >= workflowStatusId);
             }
+
 
             return _accidentDtoMapper.Map(query.ToList());
         }
