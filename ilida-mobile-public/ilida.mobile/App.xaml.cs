@@ -21,7 +21,7 @@ namespace ilida.mobile
 			_navigationService = new NavigationService(_navigationPage.Navigation);
 			_navigationService.Register(new LoginViewModel(_navigationService, _client), _root);
 			_navigationService.Register(new AccidentListViewModel(_navigationService,_client), new AccidentListView());
-			_navigationService.Register(new SubmitAccidentViewModel(_navigationService), new SubmitAccidentView());
+			_navigationService.Register(new SubmitAccidentViewModel(_navigationService,_client), new SubmitAccidentView());
 			_navigationService.Register(new AccidentViewModel(_navigationService), new AccidentView());
 
 			//MainPage = _navigationService.GetView<LoginViewModel>();

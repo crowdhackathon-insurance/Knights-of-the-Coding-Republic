@@ -8,5 +8,7 @@ namespace ilida.mobile
 	{
 		Task Login(string username, string password);
 		Task<ICollection<Accident>> GetAccidents();
+
+		Task CreateAccident(ICollection<Vehicle> vehicles, ICollection<string> photos, bool HeavilyInjured);
 	}
 }

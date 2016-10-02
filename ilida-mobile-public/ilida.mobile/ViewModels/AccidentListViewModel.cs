@@ -60,7 +60,7 @@ namespace ilida.mobile
 
 		public async Task Submit()
 		{
-			_timerActive = false;
+			_timerActive = true;
 			await _nav.PushAsync<SubmitAccidentViewModel>();
 		}
 
@@ -71,7 +71,7 @@ namespace ilida.mobile
 				AccidentId = a.AccidentId,
 				Status = a.Status
 			};
-			_timerActive = false;
+			_timerActive = true;
 			await _nav.PushAsync(avm);
 		}
 

@@ -34,5 +34,21 @@ namespace ilida.mobile
 				Status = a.WorkflowStatus.Description
 			}).ToList();
 		}
+
+		public async Task CreateAccident(ICollection<Vehicle> vehicles, ICollection<string> photos, bool HeavilyInjured)
+		{
+			var request = new CreateAccidentRequest()
+			{
+				UserId = _currentUser.Id,
+				AccidentPhotos = photos,
+				AccidentParticipants = vehicles.Select(v => new AccidentParticipantDto()
+				{
+					IdCard = v.PersonNumber,
+					AccidentCar = new AccidentCarDto() { CarPlate = v.VehicleNumber }
+				}),
+				OccuredOn = DateTime.Now
+			};
+			await _api.CreateAccidentAsync(request);
+		}
 	}
 }
