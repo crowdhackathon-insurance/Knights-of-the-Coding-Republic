@@ -64,17 +64,19 @@
     <Compile Include="Views\NavPage.xaml.cs">
       <DependentUpon>NavPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Models\Accident.cs" />
     <Compile Include="Views\SubmitAccidentView.xaml.cs">
       <DependentUpon>SubmitAccidentView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Models\Vehicle.cs" />
     <Compile Include="ViewModels\SubmitAccidentViewModel.cs" />
     <Compile Include="Views\AccidentView.xaml.cs">
       <DependentUpon>AccidentView.xaml</DependentUpon>
     </Compile>
     <Compile Include="ViewModels\AccidentViewModel.cs" />
-    <Compile Include="Models\Notification.cs" />
+    <Compile Include="ViewModels\Accident.cs" />
+    <Compile Include="ViewModels\Notification.cs" />
+    <Compile Include="ViewModels\Vehicle.cs" />
+    <Compile Include="Services\IClientService.cs" />
+    <Compile Include="Services\ClientService.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Xamarin.Forms.Core">
@@ -96,7 +98,12 @@
     <Folder Include="ViewModels\" />
     <Folder Include="Resources\" />
     <Folder Include="Services\" />
-    <Folder Include="Models\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ilida.api.client\ilida.api.client.csproj">
+      <Project>{B685C1EF-BA09-4B42-8CBC-56D49D4F9D84}</Project>
+      <Name>ilida.api.client</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <Import Project="..\packages\Xamarin.Forms.2.3.1.114\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.targets" Condition="Exists('..\packages\Xamarin.Forms.2.3.1.114\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.targets')" />

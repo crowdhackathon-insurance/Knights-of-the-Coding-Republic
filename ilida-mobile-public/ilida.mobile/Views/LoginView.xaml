@@ -21,12 +21,13 @@
 				<RowDefinition />
 			</Grid.RowDefinitions>
 			<Label Grid.Row="0" Grid.Column="0" Text="Username" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" />
-			<Entry Grid.Row="0" Grid.Column="1" Text="{Binding Username}" />
+			<Entry Grid.Row="0" Grid.Column="1" Margin="0,0,15,0" Text="{Binding Username}" />
 			<Label Grid.Row="1" Grid.Column="0" Text="Password" VerticalTextAlignment="Center" HorizontalTextAlignment="Center"/>
-			<Entry Grid.Row="1" Grid.Column="1" Text="{Binding Password}" />
+			<Entry Grid.Row="1" Grid.Column="1" Margin="0,0,15,0" Text="{Binding Password}" IsPassword="true"/>
 			<Label Grid.Row="2" Grid.Column="0" Text="Remember me" FontSize="12" VerticalTextAlignment="Center" HorizontalTextAlignment="Center"/>
 			<Switch Grid.Row="2" Grid.Column="1" IsToggled="{Binding RememberMe}" Scale="0.5" HorizontalOptions="Start"/>
 		</Grid>
 		<Button Grid.Row="2" Text="Log in" BackgroundColor="#5CB75C" TextColor="White" Scale="0.7" Command="{Binding LoginCommand}"/>
+		<Label Grid.Row="3" Text="{Binding ErrorMessage}" FontSize="12" HorizontalOptions="Center" TextColor="Red"/>
 	</Grid>
 </ContentPage>

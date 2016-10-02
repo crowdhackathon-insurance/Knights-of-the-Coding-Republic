@@ -1,4 +1,5 @@
-﻿using Xamarin.Forms;
+﻿using Ilida.Api.Client;
+using Xamarin.Forms;
 
 namespace ilida.mobile
 {
@@ -7,16 +8,20 @@ namespace ilida.mobile
 		INavigationService _navigationService;
 		NavigationPage _navigationPage;
 		Page _root;
+		IClientService _client;
 
 		public App()
 		{
 			InitializeComponent();
+
+			_client = new ClientService(new IlidaApiClient());
+
 			_root = new LoginView();
-			_navigationPage = new NavPage(_root);
+			_navigationPage = new NavPage(_root, _navigationService);
 			_navigationService = new NavigationService(_navigationPage.Navigation);
-			_navigationService.Register(new LoginViewModel(_navigationService), _root);
-			_navigationService.Register(new AccidentListViewModel(_navigationService), new AccidentListView());
-			_navigationService.Register(new SubmitAccidentViewModel(_navigationService), new SubmitAccidentView());
+			_navigationService.Register(new LoginViewModel(_navigationService, _client), _root);
+			_navigationService.Register(new AccidentListViewModel(_navigationService,_client), new AccidentListView());
+			_navigationService.Register(new SubmitAccidentViewModel(_navigationService,_client), new SubmitAccidentView());
 			_navigationService.Register(new AccidentViewModel(_navigationService), new AccidentView());
 
 			//MainPage = _navigationService.GetView<LoginViewModel>();
