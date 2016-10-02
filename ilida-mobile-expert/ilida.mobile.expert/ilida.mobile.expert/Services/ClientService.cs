@@ -5,17 +5,19 @@ using Ilida.Api.Client;
 using Ilida.Api.Dtos;
 using System.Linq;
 
-namespace ilida.mobile
+namespace ilida.mobile.expert
 {
 	public class ClientService : IClientService
 	{
 		private IIlidaApi _api;
+		private INavigationService _nav;
 
 		private UserDto _currentUser;
 
-		public ClientService(IIlidaApi api)
+		public ClientService(IIlidaApi api, INavigationService nav)
 		{
 			_api = api;
+			_nav = nav;
 		}
 
 		public async Task Login(string username, string password)
@@ -24,31 +26,49 @@ namespace ilida.mobile
 			_currentUser = user;
 		}
 
-		public async Task<ICollection<Accident>> GetAccidents()
+		public async Task<ICollection<AccidentViewModel>> GetAccidents()
 		{
 			var accidents = await _api.GetAccidentsAsync(_currentUser.Id);
-			return accidents.Select(a => new Accident()
+			return accidents.Select(a => new AccidentViewModel(_nav,this)
 			{
-				AccidentId = a.Id.ToString(),
+				AccidentId = a.Id,
 				Date = a.OccuredOn.ToString(),
-				Status = a.WorkflowStatus.Description
+				Status = a.WorkflowStatus.Description,
+				Address = "Πειραιώς 100",
+				HeavilyInjured = a.HasInjuries ? "Ναι" : "Όχι",
+				Photos = a.AccidentPhotos.Select(p => p.Url).ToList(),
+				Drivers = new List<string>() { "Νικολάου Νικόλαος", "Αθανασίου Αθανάσιος" },
+				InsuredPeople = new List<string>() { "Νικολάου Νικόλαος", "Αθανασίου Αθανάσιος" },
+				InsuranceCompanies = a.AccidentCompanies.Select(i => i.Name).ToList(),
+				Vehicles = a.AccidentCars.Select(c => c.CarPlate).ToList()
+
 			}).ToList();
 		}
 
-		public async Task CreateAccident(ICollection<Vehicle> vehicles, ICollection<string> photos, bool HeavilyInjured)
+		public async Task Accept(long accidentId)
 		{
-			var request = new CreateAccidentRequest()
+			var accreq = new AcceptAccidentRequest()
 			{
-				UserId = _currentUser.Id,
-				AccidentPhotos = photos,
-				AccidentParticipants = vehicles.Select(v => new AccidentParticipantDto()
-				{
-					IdCard = v.PersonNumber,
-					AccidentCar = new AccidentCarDto() { CarPlate = v.VehicleNumber }
-				}),
-				OccuredOn = DateTime.Now
+				AccidentId = accidentId,
+				UserId = _currentUser.Id
 			};
-			await _api.CreateAccidentAsync(request);
+			await _api.AcceptAccidentAsync(accreq);
 		}
+
+		//public async Task CreateAccident(ICollection<Vehicle> vehicles, ICollection<string> photos, bool HeavilyInjured)
+		//{
+		//	var request = new CreateAccidentRequest()
+		//	{
+		//		UserId = _currentUser.Id,
+		//		AccidentPhotos = photos,
+		//		AccidentParticipants = vehicles.Select(v => new AccidentParticipantDto()
+		//		{
+		//			IdCard = v.PersonNumber,
+		//			AccidentCar = new AccidentCarDto() { CarPlate = v.VehicleNumber }
+		//		}),
+		//		OccuredOn = DateTime.Now
+		//	};
+		//	await _api.CreateAccidentAsync(request);
+		//}
 	}
 }

@@ -65,30 +65,9 @@
       <DependentUpon>ImagesView.xaml</DependentUpon>
     </Compile>
     <Compile Include="ViewModels\ImagesViewModel.cs" />
-    <Compile Include="DTOs\AccidentActionDto.cs" />
-    <Compile Include="DTOs\AccidentCarDto.cs" />
-    <Compile Include="DTOs\AccidentDto.cs" />
-    <Compile Include="DTOs\AccidentParticipantDto.cs" />
-    <Compile Include="DTOs\AccidentPhotoDto.cs" />
-    <Compile Include="DTOs\AccidentWitnessDto.cs" />
-    <Compile Include="DTOs\LoginRequest.cs" />
-    <Compile Include="DTOs\UserDto.cs" />
-    <Compile Include="Models\AccidentAction.cs" />
-    <Compile Include="Models\AccidentCar.cs" />
-    <Compile Include="Models\AccidentCompany.cs" />
-    <Compile Include="Models\AccidentCondition.cs" />
-    <Compile Include="Models\AccidentParticipant.cs" />
-    <Compile Include="Models\AccidentPhoto.cs" />
-    <Compile Include="Models\AccidentWitness.cs" />
-    <Compile Include="Models\CarAccidentCondition.cs" />
-    <Compile Include="Models\Company.cs" />
-    <Compile Include="Models\Role.cs" />
-    <Compile Include="Models\User.cs" />
-    <Compile Include="Models\UserRole.cs" />
-    <Compile Include="Models\WorkflowAction.cs" />
-    <Compile Include="Models\WorkflowStatus.cs" />
     <Compile Include="ViewModels\AccidentViewModel.cs" />
-    <Compile Include="Models\Accident.cs" />
+    <Compile Include="Services\ClientService.cs" />
+    <Compile Include="Services\IClientService.cs" />
   </ItemGroup>
   <ItemGroup>    
     <None Include="packages.config" />
@@ -97,8 +76,6 @@
     <Folder Include="Services\" />
     <Folder Include="Views\" />
     <Folder Include="ViewModels\" />
-    <Folder Include="Models\" />
-    <Folder Include="DTOs\" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Xamarin.Forms.Core">
@@ -110,6 +87,12 @@
     <Reference Include="Xamarin.Forms.Xaml">
       <HintPath>..\packages\Xamarin.Forms.2.3.2.127\lib\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.Xaml.dll</HintPath>
     </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\ilida-mobile-public\ilida.api.client\ilida.api.client.csproj">
+      <Project>{B685C1EF-BA09-4B42-8CBC-56D49D4F9D84}</Project>
+      <Name>ilida.api.client</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <Import Project="..\packages\Xamarin.Forms.2.3.2.127\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.targets" Condition="Exists('..\packages\Xamarin.Forms.2.3.2.127\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.targets')" />

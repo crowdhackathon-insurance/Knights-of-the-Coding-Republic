@@ -17,5 +17,10 @@ namespace ilida.mobile.expert
 				PropertyChanged(this,
 					new PropertyChangedEventArgs(propertyName));
 		}
+
+		public virtual void Activated()
+		{
+
+		}
 	}
 }

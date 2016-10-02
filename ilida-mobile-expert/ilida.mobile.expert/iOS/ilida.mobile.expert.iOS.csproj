@@ -106,6 +106,10 @@
       <Project>{931221F7-A91C-4640-896C-D5CACCFA7FF3}</Project>
       <Name>ilida.mobile.expert</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\..\ilida-mobile-public\ilida.api.client\ilida.api.client.csproj">
+      <Project>{B685C1EF-BA09-4B42-8CBC-56D49D4F9D84}</Project>
+      <Name>ilida.api.client</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Contents.json" />

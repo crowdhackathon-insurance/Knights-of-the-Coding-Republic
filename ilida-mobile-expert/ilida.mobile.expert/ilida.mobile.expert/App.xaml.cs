@@ -7,6 +7,7 @@ namespace ilida.mobile.expert
 
 		INavigationService _navigationService;
 		NavigationPage _navigationPage;
+		IClientService _client;
 		Page _root;
 
 		public App()
@@ -15,8 +16,11 @@ namespace ilida.mobile.expert
 			_root = new LoginView();
 			_navigationPage = new NavPage(_root);
 			_navigationService = new NavigationService(_navigationPage.Navigation);
-			_navigationService.Register(new LoginViewModel(_navigationService), _root);
-			_navigationService.Register(new AccidentListViewModel(_navigationService), new AccidentListView());
+
+			_client = new ClientService(new Ilida.Api.Client.IlidaApiClient(), _navigationService);
+
+			_navigationService.Register(new LoginViewModel(_navigationService, _client), _root);
+			_navigationService.Register(new AccidentListViewModel(_navigationService, _client), new AccidentListView());
 			_navigationService.Register(new ImagesViewModel(_navigationService), new ImagesView());
 
 			//MainPage = _navigationService.GetView<LoginViewModel>();
