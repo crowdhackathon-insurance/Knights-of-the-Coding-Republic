@@ -43,9 +43,11 @@ namespace ilida.mobile
 			return _viewsToVms[view];
 		}
 
-		public Task PopAsync()
+		public async Task PopAsync()
 		{
-			throw new NotImplementedException();
+			var page = await _navigation.PopAsync();
+			var vm = (BaseViewModel)page.BindingContext;
+			vm.Activated();
 		}
 
 		public Task PopModalAsync()
@@ -67,6 +69,7 @@ namespace ilida.mobile
 					var view = this._vMsToViews[vm];
 					view.BindingContext = viewModel;
 					await this._navigation.PushAsync(view);
+					viewModel.Activated();
 					return;
 				}
 			}
@@ -81,6 +84,7 @@ namespace ilida.mobile
 				{
 					var view = this._vMsToViews[cvm];
 					await this._navigation.PushAsync(view);
+					cvm.Activated();
 					return;
 				}
 			}

@@ -9,6 +9,7 @@ namespace ilida.mobile
 	public class AccidentListViewModel : BaseViewModel
 	{
 		INavigationService _nav;
+		private bool _timerActive = true;
 
 		public AccidentListViewModel(INavigationService nav)
 		{
@@ -61,6 +62,7 @@ namespace ilida.mobile
 
 		public async Task Submit()
 		{
+			_timerActive = false;
 			await _nav.PushAsync<SubmitAccidentViewModel>();
 		}
 
@@ -71,7 +73,26 @@ namespace ilida.mobile
 				AccidentId = a.AccidentId,
 				Status = a.Status
 			};
+			_timerActive = false;
 			await _nav.PushAsync(avm);
+		}
+
+		public override void Activated()
+		{
+			base.Activated();
+			_timerActive = true;
+			StartTimer();
+		}
+
+		public bool TimerHandle()
+		{
+
+			return _timerActive;
+		}
+
+		public void StartTimer()
+		{
+			Xamarin.Forms.Device.StartTimer(new TimeSpan(0, 0, 5), () => TimerHandle());
 		}
 
 	}

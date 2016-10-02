@@ -28,5 +28,6 @@
 			<Switch Grid.Row="2" Grid.Column="1" IsToggled="{Binding RememberMe}" Scale="0.5" HorizontalOptions="Start"/>
 		</Grid>
 		<Button Grid.Row="2" Text="Log in" BackgroundColor="#5CB75C" TextColor="White" Scale="0.7" Command="{Binding LoginCommand}"/>
+		<Label Grid.Row="3" Text="{Binding ErrorMessage}" FontSize="12" HorizontalOptions="Center" TextColor="Red"/>
 	</Grid>
 </ContentPage>

@@ -47,8 +47,23 @@ namespace ilida.mobile
 
 		public ICommand LoginCommand { get; set; }
 
+		private string _errorMessage;
+		public string ErrorMessage
+		{
+			get
+			{
+				return _errorMessage;
+			}
+			set
+			{
+				_errorMessage = value;
+				OnPropertyChanged(nameof(ErrorMessage));
+			}
+		}
+
 		public async Task Login()
 		{
+			ErrorMessage = "Λάθος όνομα χρήστη ή κωδικός";
 			await _nav.PushAsync<AccidentListViewModel>();
 		}
 	}

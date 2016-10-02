@@ -12,7 +12,7 @@ namespace ilida.mobile
 		{
 			InitializeComponent();
 			_root = new LoginView();
-			_navigationPage = new NavPage(_root);
+			_navigationPage = new NavPage(_root,_navigationService);
 			_navigationService = new NavigationService(_navigationPage.Navigation);
 			_navigationService.Register(new LoginViewModel(_navigationService), _root);
 			_navigationService.Register(new AccidentListViewModel(_navigationService), new AccidentListView());

@@ -7,10 +7,13 @@ namespace ilida.mobile
 {
 	public partial class NavPage : NavigationPage
 	{
-		
-		public NavPage(Page root) : base(root)
+		INavigationService _nav;
+
+		public NavPage(Page root, INavigationService nav) : base(root)
 		{
 			InitializeComponent();
+			_nav = nav;
 		}
+
 	}
 }

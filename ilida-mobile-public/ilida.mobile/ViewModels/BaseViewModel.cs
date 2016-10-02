@@ -3,7 +3,7 @@ using System.ComponentModel;
 
 namespace ilida.mobile
 {
-	public class BaseViewModel : INotifyPropertyChanged
+	public abstract class BaseViewModel : INotifyPropertyChanged
 	{
 		public BaseViewModel()
 		{
@@ -17,5 +17,11 @@ namespace ilida.mobile
 				PropertyChanged(this,
 					new PropertyChangedEventArgs(propertyName));
 		}
+
+		public virtual void Activated()
+		{
+
+		}
+
 	}
 }
