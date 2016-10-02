@@ -13,9 +13,9 @@ namespace ilida.mobile.expert
 		public AccidentListViewModel(INavigationService nav)
 		{
 			_nav = nav;
-			_accidents = new List<Accident>()
+			_accidents = new List<AccidentViewModel>()
 			{
-				new Accident(_nav){
+				new AccidentViewModel(_nav){
 					AccidentId="891291",
 					Date="11/09/2016 14:30",
 					Status="Προς Ανάληψη από Εμπειρογνώμονα",
@@ -27,7 +27,7 @@ namespace ilida.mobile.expert
 					Vehicles=new List<string>(){"ZMI1543","KIA1231"},
 					Photos=new List<string>(){"http://www.caraccidentlawyerdc.com/wp-content/uploads/2013/11/Car-Accident.jpg","http://i.telegraph.co.uk/multimedia/archive/01709/car-accident_1709879b.jpg"}
 				},
-				new Accident(_nav){
+				new AccidentViewModel(_nav){
 					AccidentId="732291",
 					Date="12/03/2015 11:00",
 					Status="Ολοκληρώθηκε",
@@ -41,14 +41,14 @@ namespace ilida.mobile.expert
 				}
 			};
 			SubmitCommand = new Command(async () => await Submit());
-			SelectCommand = new Command<Accident>(async (a) => await Select(a));
+			SelectCommand = new Command<AccidentViewModel>(async (a) => await Select(a));
 		}
 
 		public ICommand SubmitCommand { get; set; }
 		public ICommand SelectCommand { get; set; }
 
-		private ICollection<Accident> _accidents;
-		public ICollection<Accident> Accidents
+		private ICollection<AccidentViewModel> _accidents;
+		public ICollection<AccidentViewModel> Accidents
 		{
 			get
 			{
@@ -61,8 +61,8 @@ namespace ilida.mobile.expert
 			}
 		}
 
-		private Accident _selectedItem;
-		public Accident SelectedItem
+		private AccidentViewModel _selectedItem;
+		public AccidentViewModel SelectedItem
 		{
 			get
 			{
@@ -86,7 +86,7 @@ namespace ilida.mobile.expert
 			//await _nav.PushAsync<SubmitAccidentViewModel>();
 		}
 
-		public async Task Select(Accident a)
+		public async Task Select(AccidentViewModel a)
 		{
 			//var avm = new AccidentViewModel(_nav)
 			//{
