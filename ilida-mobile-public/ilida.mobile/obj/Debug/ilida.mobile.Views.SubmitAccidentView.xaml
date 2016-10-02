@@ -50,9 +50,9 @@
 			</Grid.ColumnDefinitions>
 			<Label Grid.Row="0" Grid.Column="0" Text="Υπάρχουν σοβαρά τραυματίες;" FontSize="14" Scale="0.9" HorizontalOptions="Center" />
 			<Label Margin="15" Text="Άμεση ειδοποίηση Ε.ΚΑ.Β." Scale="0.6" FontSize="15" HorizontalOptions="End" />
-			<Switch Grid.Row="0" Grid.Column="1" Scale="0.7" HorizontalOptions="Start" VerticalOptions="Start" />
+			<Switch Grid.Row="0" Grid.Column="1" Scale="0.7" HorizontalOptions="Start" VerticalOptions="Start" IsToggled="{Binding SeriouslyInjured}"/>
 			<Label Grid.Row="1" Text="Βρίσκομαι στον χώρο του περιστατικού:" Scale="0.9" FontSize="14" VerticalOptions="Center" />
-			<Switch Grid.Row="1" Grid.Column="1" Scale="0.7" HorizontalOptions="Start" VerticalOptions="Start" />
+			<Switch Grid.Row="1" Grid.Column="1" Scale="0.7" HorizontalOptions="Start" VerticalOptions="Start" IsToggled="{Binding InAccidentLocation}"/>
 		</Grid>
 		<Button Grid.Row="3" Text="Υποβολή" BackgroundColor="#5CB75C" TextColor="White" Scale="0.8" Command="{Binding SubmitCommand}"/>
 	</Grid>
