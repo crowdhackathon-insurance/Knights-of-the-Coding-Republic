@@ -169,8 +169,6 @@ namespace Ilida.Api.Controllers
 
             db.Entry(accident).State = EntityState.Modified;
 
-            var lastAction = accident.AccidentActions.Last();
-
             var action = new AccidentAction
             {
                 Timestamp = DateTime.UtcNow,
@@ -178,12 +176,12 @@ namespace Ilida.Api.Controllers
                 WorkflowActionId = 2,
                 WorkflowAction = await db.WorkflowActions.FindAsync(2),
                 Accident = accident,
-                PreviousWorkflowStatusId = lastAction.NextWorkflowStatusId,
-                NextWorkflowStatusId = lastAction.NextWorkflowStatusId + 1,
+                PreviousWorkflowStatusId = 0,
+                NextWorkflowStatusId = 0,
                 Comment = "Από: " + userId
             };
             accident.AccidentActions.Add(action);
-            accident.WorkflowStatusId = lastAction.NextWorkflowStatusId + 1;
+            accident.WorkflowStatusId = 3;
             accident.WorkflowStatus = await db.WorkflowStatuses.FindAsync(accident.WorkflowStatusId);
 
             await db.SaveChangesAsync();
@@ -203,8 +201,6 @@ namespace Ilida.Api.Controllers
                 return NotFound();
             }
 
-            var lastAction = accident.AccidentActions.Last();
-
             var action = new AccidentAction
             {
                 Timestamp = DateTime.UtcNow,
@@ -212,12 +208,12 @@ namespace Ilida.Api.Controllers
                 WorkflowActionId = 3,
                 WorkflowAction = await db.WorkflowActions.FindAsync(3),
                 Accident = accident,
-                PreviousWorkflowStatusId = lastAction.NextWorkflowStatusId,
-                NextWorkflowStatusId = lastAction.NextWorkflowStatusId + 1,
+                PreviousWorkflowStatusId = 0,
+                NextWorkflowStatusId = 0,
                 Comment = "Από: " + userId
             };
             accident.AccidentActions.Add(action);
-            accident.WorkflowStatusId = lastAction.NextWorkflowStatusId + 1;
+            accident.WorkflowStatusId = 4;
             accident.WorkflowStatus = await db.WorkflowStatuses.FindAsync(accident.WorkflowStatusId);
 
             db.Entry(accident).State = EntityState.Modified;
