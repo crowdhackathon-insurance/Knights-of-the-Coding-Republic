@@ -10,126 +10,137 @@ import java.util.List;
 @Entity
 @Table(name = "Accidents", schema = "dbo", catalog = "IlidaDB")
 public class AccidentsEntity {
-    private long id;
-    private Timestamp occuredOn;
-    private boolean hasInjuries;
-    private boolean hasOtherVehicleDamages;
-    private boolean hasOtherItemsDamages;
-    private double latitude;
-    private double longitude;
-    private long userId;
-    private String diagramUrl;
-    private long workflowStatusId;
-    private List<CompaniesEntity> companies;
-    private List<AccidentCarsEntity> cars;
+    private long Id;
+    private Timestamp OccuredOn;
+    private boolean HasInjuries;
+    private boolean HasOtherVehicleDamages;
+    private boolean HasOtherItemsDamages;
+    private double Latitude;
+    private double Longitude;
+    private long UserId;
+    private String DiagramUrl;
+    private long WorkflowStatusId;
+    private WorkflowStatusEntity WorkflowStatus;
+    private List<CompaniesEntity> AccidentCompanies;
+    private List<AccidentCarsEntity> AccidentCars;
 
     @Id
     @Column(name = "Id", nullable = false)
     public long getId() {
-        return id;
+        return Id;
     }
 
     public AccidentsEntity setId(long id) {
-        this.id = id;
+        this.Id = id;
         return this;
     }
 
     @Basic
     @Column(name = "OccuredOn", nullable = false)
     public Timestamp getOccuredOn() {
-        return occuredOn;
+        return OccuredOn;
     }
 
     public AccidentsEntity setOccuredOn(Timestamp occuredOn) {
-        this.occuredOn = occuredOn;
+        this.OccuredOn = occuredOn;
         return this;
     }
 
     @Basic
     @Column(name = "HasInjuries", nullable = false)
     public boolean isHasInjuries() {
-        return hasInjuries;
+        return HasInjuries;
     }
 
     public AccidentsEntity setHasInjuries(boolean hasInjuries) {
-        this.hasInjuries = hasInjuries;
+        this.HasInjuries = hasInjuries;
         return this;
     }
 
     @Basic
     @Column(name = "HasOtherVehicleDamages", nullable = false)
     public boolean isHasOtherVehicleDamages() {
-        return hasOtherVehicleDamages;
+        return HasOtherVehicleDamages;
     }
 
     public AccidentsEntity setHasOtherVehicleDamages(boolean hasOtherVehicleDamages) {
-        this.hasOtherVehicleDamages = hasOtherVehicleDamages;
+        this.HasOtherVehicleDamages = hasOtherVehicleDamages;
         return this;
     }
 
     @Basic
     @Column(name = "HasOtherItemsDamages", nullable = false)
     public boolean isHasOtherItemsDamages() {
-        return hasOtherItemsDamages;
+        return HasOtherItemsDamages;
     }
 
     public AccidentsEntity setHasOtherItemsDamages(boolean hasOtherItemsDamages) {
-        this.hasOtherItemsDamages = hasOtherItemsDamages;
+        this.HasOtherItemsDamages = hasOtherItemsDamages;
         return this;
     }
 
     @Basic
     @Column(name = "Latitude", nullable = false, precision = 0)
     public double getLatitude() {
-        return latitude;
+        return Latitude;
     }
 
     public AccidentsEntity setLatitude(double latitude) {
-        this.latitude = latitude;
+        this.Latitude = latitude;
         return this;
     }
 
     @Basic
     @Column(name = "Longitude", nullable = false, precision = 0)
     public double getLongitude() {
-        return longitude;
+        return Longitude;
     }
 
     public AccidentsEntity setLongitude(double longitude) {
-        this.longitude = longitude;
+        this.Longitude = longitude;
         return this;
     }
 
     @Basic
     @Column(name = "UserId", nullable = false)
     public long getUserId() {
-        return userId;
+        return UserId;
     }
 
     public AccidentsEntity setUserId(long userId) {
-        this.userId = userId;
+        this.UserId = userId;
         return this;
     }
 
     @Basic
     @Column(name = "DiagramUrl", nullable = true, length = 2147483647)
     public String getDiagramUrl() {
-        return diagramUrl;
+        return DiagramUrl;
     }
 
     public AccidentsEntity setDiagramUrl(String diagramUrl) {
-        this.diagramUrl = diagramUrl;
+        this.DiagramUrl = diagramUrl;
         return this;
     }
 
     @Basic
     @Column(name = "WorkflowStatusId", nullable = false)
     public long getWorkflowStatusId() {
-        return workflowStatusId;
+        return WorkflowStatusId;
     }
 
     public AccidentsEntity setWorkflowStatusId(long workflowStatusId) {
-        this.workflowStatusId = workflowStatusId;
+        this.WorkflowStatusId = workflowStatusId;
+        return this;
+    }
+
+    @Transient
+    public WorkflowStatusEntity getWorkflowStatus() {
+        return WorkflowStatus;
+    }
+
+    public AccidentsEntity setWorkflowStatus(WorkflowStatusEntity workflowStatus) {
+        WorkflowStatus = workflowStatus;
         return this;
     }
 
@@ -140,16 +151,16 @@ public class AccidentsEntity {
 
         AccidentsEntity that = (AccidentsEntity) o;
 
-        if (id != that.id) return false;
-        if (hasInjuries != that.hasInjuries) return false;
-        if (hasOtherVehicleDamages != that.hasOtherVehicleDamages) return false;
-        if (hasOtherItemsDamages != that.hasOtherItemsDamages) return false;
-        if (Double.compare(that.latitude, latitude) != 0) return false;
-        if (Double.compare(that.longitude, longitude) != 0) return false;
-        if (userId != that.userId) return false;
-        if (workflowStatusId != that.workflowStatusId) return false;
-        if (occuredOn != null ? !occuredOn.equals(that.occuredOn) : that.occuredOn != null) return false;
-        if (diagramUrl != null ? !diagramUrl.equals(that.diagramUrl) : that.diagramUrl != null) return false;
+        if (Id != that.Id) return false;
+        if (HasInjuries != that.HasInjuries) return false;
+        if (HasOtherVehicleDamages != that.HasOtherVehicleDamages) return false;
+        if (HasOtherItemsDamages != that.HasOtherItemsDamages) return false;
+        if (Double.compare(that.Latitude, Latitude) != 0) return false;
+        if (Double.compare(that.Longitude, Longitude) != 0) return false;
+        if (UserId != that.UserId) return false;
+        if (WorkflowStatusId != that.WorkflowStatusId) return false;
+        if (OccuredOn != null ? !OccuredOn.equals(that.OccuredOn) : that.OccuredOn != null) return false;
+        if (DiagramUrl != null ? !DiagramUrl.equals(that.DiagramUrl) : that.DiagramUrl != null) return false;
 
         return true;
     }
@@ -158,40 +169,40 @@ public class AccidentsEntity {
     public int hashCode() {
         int result;
         long temp;
-        result = (int) (id ^ (id >>> 32));
-        result = 31 * result + (occuredOn != null ? occuredOn.hashCode() : 0);
-        result = 31 * result + (hasInjuries ? 1 : 0);
-        result = 31 * result + (hasOtherVehicleDamages ? 1 : 0);
-        result = 31 * result + (hasOtherItemsDamages ? 1 : 0);
-        temp = Double.doubleToLongBits(latitude);
+        result = (int) (Id ^ (Id >>> 32));
+        result = 31 * result + (OccuredOn != null ? OccuredOn.hashCode() : 0);
+        result = 31 * result + (HasInjuries ? 1 : 0);
+        result = 31 * result + (HasOtherVehicleDamages ? 1 : 0);
+        result = 31 * result + (HasOtherItemsDamages ? 1 : 0);
+        temp = Double.doubleToLongBits(Latitude);
         result = 31 * result + (int) (temp ^ (temp >>> 32));
-        temp = Double.doubleToLongBits(longitude);
+        temp = Double.doubleToLongBits(Longitude);
         result = 31 * result + (int) (temp ^ (temp >>> 32));
-        result = 31 * result + (int) (userId ^ (userId >>> 32));
-        result = 31 * result + (diagramUrl != null ? diagramUrl.hashCode() : 0);
-        result = 31 * result + (int) (workflowStatusId ^ (workflowStatusId >>> 32));
+        result = 31 * result + (int) (UserId ^ (UserId >>> 32));
+        result = 31 * result + (DiagramUrl != null ? DiagramUrl.hashCode() : 0);
+        result = 31 * result + (int) (WorkflowStatusId ^ (WorkflowStatusId >>> 32));
         return result;
     }
 
     @ManyToMany
     @JoinTable(name = "AccidentCompanies", catalog = "IlidaDB", schema = "dbo", joinColumns = @JoinColumn(name = "AccidentId", referencedColumnName = "Id", nullable = false), inverseJoinColumns = @JoinColumn(name = "CompanyId", referencedColumnName = "Id", nullable = false))
-    public List<CompaniesEntity> getCompanies() {
-        return companies;
+    public List<CompaniesEntity> getAccidentCompanies() {
+        return AccidentCompanies;
     }
 
-    public AccidentsEntity setCompanies(List<CompaniesEntity> companies) {
-        this.companies = companies;
+    public AccidentsEntity setAccidentCompanies(List<CompaniesEntity> accidentCompanies) {
+        this.AccidentCompanies = accidentCompanies;
         return this;
     }
 
     @ManyToMany
     @JoinTable(name = "CarAccidentConditions", catalog = "IlidaDB", schema = "dbo", joinColumns = @JoinColumn(name = "AccidentId", referencedColumnName = "Id", nullable = false), inverseJoinColumns = @JoinColumn(name = "AccidentCarId", referencedColumnName = "Id", nullable = false))
-    public List<AccidentCarsEntity> getCars() {
-        return cars;
+    public List<AccidentCarsEntity> getAccidentCars() {
+        return AccidentCars;
     }
 
-    public AccidentsEntity setCars(List<AccidentCarsEntity> cars) {
-        this.cars = cars;
+    public AccidentsEntity setAccidentCars(List<AccidentCarsEntity> accidentCars) {
+        this.AccidentCars = accidentCars;
         return this;
     }
 }

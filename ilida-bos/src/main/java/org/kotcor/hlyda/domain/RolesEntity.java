@@ -9,29 +9,29 @@ import java.util.Set;
 @Entity
 @Table(name = "Roles", schema = "dbo", catalog = "IlidaDB")
 public class RolesEntity {
-    private long id;
-    private String name;
-    private Set<UsersEntity> users;
+    private long Id;
+    private String Name;
+    private Set<UsersEntity> Users;
 
     @Id
     @Column(name = "Id", nullable = false)
     public long getId() {
-        return id;
+        return Id;
     }
 
     public RolesEntity setId(long id) {
-        this.id = id;
+        this.Id = id;
         return this;
     }
 
     @Basic
     @Column(name = "Name", nullable = false, length = 50)
     public String getName() {
-        return name;
+        return Name;
     }
 
     public RolesEntity setName(String name) {
-        this.name = name;
+        this.Name = name;
         return this;
     }
 
@@ -42,26 +42,26 @@ public class RolesEntity {
 
         RolesEntity that = (RolesEntity) o;
 
-        if (id != that.id) return false;
-        if (name != null ? !name.equals(that.name) : that.name != null) return false;
+        if (Id != that.Id) return false;
+        if (Name != null ? !Name.equals(that.Name) : that.Name != null) return false;
 
         return true;
     }
 
     @Override
     public int hashCode() {
-        int result = (int) (id ^ (id >>> 32));
-        result = 31 * result + (name != null ? name.hashCode() : 0);
+        int result = (int) (Id ^ (Id >>> 32));
+        result = 31 * result + (Name != null ? Name.hashCode() : 0);
         return result;
     }
 
     @ManyToMany(mappedBy = "roles")
     public Set<UsersEntity> getUsers() {
-        return users;
+        return Users;
     }
 
     public RolesEntity setUsers(Set<UsersEntity> users) {
-        this.users = users;
+        this.Users = users;
         return this;
     }
 }

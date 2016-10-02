@@ -21,6 +21,7 @@ spring:
             enabled: false # we use gulp + BrowserSync for livereload
     jackson:
         serialization.indent_output: true
+        mapper.accept_case_insensitive_properties: true
     datasource:
         type: com.zaxxer.hikari.HikariDataSource
         url: jdbc:sqlserver://ilida-db-server.database.windows.net;databaseName=IlidaDB

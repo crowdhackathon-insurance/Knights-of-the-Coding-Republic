@@ -9,29 +9,29 @@ import java.util.List;
 @Entity
 @Table(name = "Companies", schema = "dbo", catalog = "IlidaDB")
 public class CompaniesEntity {
-    private long id;
-    private String name;
-    private List<AccidentsEntity> accidents;
+    private long Id;
+    private String Name;
+    private List<AccidentsEntity> Accidents;
 
     @Id
     @Column(name = "Id", nullable = false)
     public long getId() {
-        return id;
+        return Id;
     }
 
     public CompaniesEntity setId(long id) {
-        this.id = id;
+        this.Id = id;
         return this;
     }
 
     @Basic
     @Column(name = "Name", nullable = false, length = 255)
     public String getName() {
-        return name;
+        return Name;
     }
 
     public CompaniesEntity setName(String name) {
-        this.name = name;
+        this.Name = name;
         return this;
     }
 
@@ -42,26 +42,26 @@ public class CompaniesEntity {
 
         CompaniesEntity that = (CompaniesEntity) o;
 
-        if (id != that.id) return false;
-        if (name != null ? !name.equals(that.name) : that.name != null) return false;
+        if (Id != that.Id) return false;
+        if (Name != null ? !Name.equals(that.Name) : that.Name != null) return false;
 
         return true;
     }
 
     @Override
     public int hashCode() {
-        int result = (int) (id ^ (id >>> 32));
-        result = 31 * result + (name != null ? name.hashCode() : 0);
+        int result = (int) (Id ^ (Id >>> 32));
+        result = 31 * result + (Name != null ? Name.hashCode() : 0);
         return result;
     }
 
-    @ManyToMany(mappedBy = "companies")
+    @ManyToMany(mappedBy = "accidentCompanies")
     public List<AccidentsEntity> getAccidents() {
-        return accidents;
+        return Accidents;
     }
 
     public CompaniesEntity setAccidents(List<AccidentsEntity> accidents) {
-        this.accidents = accidents;
+        this.Accidents = accidents;
         return this;
     }
 }

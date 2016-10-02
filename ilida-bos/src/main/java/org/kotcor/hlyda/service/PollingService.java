@@ -2,14 +2,12 @@ package org.kotcor.hlyda.service;
 
 import org.kotcor.hlyda.domain.AccidentsEntity;
 import org.kotcor.hlyda.domain.enumerations.AccidentStatus;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.ApplicationEventPublisher;
-import org.springframework.http.ResponseEntity;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
-import org.springframework.web.client.RestTemplate;
 
 import javax.inject.Inject;
+import java.io.IOException;
 
 /**
  * Created by KPentaris on 01-Oct-16.
@@ -17,19 +15,17 @@ import javax.inject.Inject;
 @Service
 public class PollingService {
 
-    String baseUrl;
+    String baseUrl = "http://ilida-api.azurewebsites.net/";
 
     @Inject
     ApplicationEventPublisher publisher;
 
     @Inject
-    @Qualifier("data-api")
-    RestTemplate apiTemplate;
+    AccidentService accidentService;
 
-//    @Scheduled(fixedRate = 5000)
-    public void pollForAccidents() {
-        ResponseEntity<AccidentsEntity[]> response = apiTemplate.getForEntity(baseUrl, AccidentsEntity[].class, AccidentStatus.inProcess.getValue());
-        AccidentsEntity[] accidents = response.getBody();
+    @Scheduled(fixedRate = 3000)
+    public void pollForAccidents() throws IOException {
+        AccidentsEntity[] accidents = accidentService.getAllAccidentsWithStatus(AccidentStatus.get(AccidentStatus.inProcess.getValue()));
         publisher.publishEvent(accidents);
     }
 

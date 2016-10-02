@@ -9,17 +9,17 @@
                 AccidentStatus: {
                     getById: function (id) {
                         for (var type in this) {
-                            if (this.hasOwnProperty(type) && type == id)
+                            if (this.hasOwnProperty(type) && this[type].id == id)
                                 return this[type];
                         }
                     },
                     inProcces: {
                         id: 2,
-                        description: 'inProcess'
+                        description: 'Σε Επεξεργασία'
                     },
                     assignToExpert: {
                         id: 3,
-                        description: 'assignToExpert'
+                        description: 'Ανάληψη από Εμπειρογνώμονα'
                     }
                 }
             };

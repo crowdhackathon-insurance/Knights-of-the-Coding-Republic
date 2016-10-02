@@ -8,6 +8,7 @@ import org.springframework.messaging.simp.SimpMessageSendingOperations;
 import org.springframework.stereotype.Component;
 
 import javax.inject.Inject;
+import java.util.Collection;
 
 /**
  * Created by KPentaris on 01-Oct-16.
@@ -22,7 +23,6 @@ public class AccidentsNotifier {
 
     @EventListener
     public void notifyAlert(AccidentsEntity[] accidents) {
-        log.info("New accidents: " + accidents.toString());
         messagingTemplate.convertAndSend("/topic/accidents", accidents);
     }
 
