@@ -1,0 +1,34 @@
+<!--
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence xmlns="http://java.sun.com/xml/ns/persistence"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xsi:schemaLocation="http://java.sun.com/xml/ns/persistence
+             http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd"
+             version="2.0">
+    <persistence-unit name="ILIDAPU">
+        <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
+        <class>org.kotcor.hlyda.domain.AccidentActionsEntity</class>
+        <class>org.kotcor.hlyda.domain.AccidentCarsEntity</class>
+        <class>org.kotcor.hlyda.domain.AccidentConditionsEntity</class>
+        <class>org.kotcor.hlyda.domain.AccidentParticipantsEntity</class>
+        <class>org.kotcor.hlyda.domain.AccidentPhotoesEntity</class>
+        <class>org.kotcor.hlyda.domain.AccidentsEntity</class>
+        <class>org.kotcor.hlyda.domain.AccidentWitnessesEntity</class>
+        <class>org.kotcor.hlyda.domain.CompaniesEntity</class>
+        <class>org.kotcor.hlyda.domain.RolesEntity</class>
+        <class>org.kotcor.hlyda.domain.UsersEntity</class>
+        <class>org.kotcor.hlyda.domain.WorkflowActionsEntity</class>
+        <class>org.kotcor.hlyda.domain.WorkflowStatusEntity</class>
+        <class>org.kotcor.hlyda.domain.AccidentCompaniesEntity</class>
+        <class>org.kotcor.hlyda.domain.CarAccidentConditionsEntity</class>
+        <class>org.kotcor.hlyda.domain.UserRolesEntity</class>
+        <properties>
+            <property name="hibernate.connection.driver_class" value="com.microsoft.sqlserver.jdbc.SQLServerDriver"/>
+            <property name="hibernate.connection.url" value="jdbc:sqlserver://ilida-db-server.database.windows.net;databaseName=IlidaDB"/>
+            <property name="hibernate.connection.username"/>
+            <property name="hibernate.connection.password"/>
+            <property name="hibernate.dialect" value="org.hibernate.dialect.SQLServerDialect"/>
+        </properties>
+    </persistence-unit>
+</persistence>
+-->
