@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ilida.mobile.expert.iOS", "
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ilida.mobile.expert.Droid", "Droid\ilida.mobile.expert.Droid.csproj", "{0B7B71B9-0028-4B8C-BFE8-42767572CF7B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ilida.api.client", "..\..\ilida-mobile-public\ilida.api.client\ilida.api.client.csproj", "{B685C1EF-BA09-4B42-8CBC-56D49D4F9D84}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -53,5 +55,17 @@ Global
 		{0B7B71B9-0028-4B8C-BFE8-42767572CF7B}.Release|iPhoneSimulator.Build.0 = Release|Any CPU
 		{0B7B71B9-0028-4B8C-BFE8-42767572CF7B}.Debug|iPhone.ActiveCfg = Debug|Any CPU
 		{0B7B71B9-0028-4B8C-BFE8-42767572CF7B}.Debug|iPhone.Build.0 = Debug|Any CPU
+		{B685C1EF-BA09-4B42-8CBC-56D49D4F9D84}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B685C1EF-BA09-4B42-8CBC-56D49D4F9D84}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B685C1EF-BA09-4B42-8CBC-56D49D4F9D84}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B685C1EF-BA09-4B42-8CBC-56D49D4F9D84}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B685C1EF-BA09-4B42-8CBC-56D49D4F9D84}.Debug|iPhoneSimulator.ActiveCfg = Debug|Any CPU
+		{B685C1EF-BA09-4B42-8CBC-56D49D4F9D84}.Debug|iPhoneSimulator.Build.0 = Debug|Any CPU
+		{B685C1EF-BA09-4B42-8CBC-56D49D4F9D84}.Release|iPhone.ActiveCfg = Release|Any CPU
+		{B685C1EF-BA09-4B42-8CBC-56D49D4F9D84}.Release|iPhone.Build.0 = Release|Any CPU
+		{B685C1EF-BA09-4B42-8CBC-56D49D4F9D84}.Release|iPhoneSimulator.ActiveCfg = Release|Any CPU
+		{B685C1EF-BA09-4B42-8CBC-56D49D4F9D84}.Release|iPhoneSimulator.Build.0 = Release|Any CPU
+		{B685C1EF-BA09-4B42-8CBC-56D49D4F9D84}.Debug|iPhone.ActiveCfg = Debug|Any CPU
+		{B685C1EF-BA09-4B42-8CBC-56D49D4F9D84}.Debug|iPhone.Build.0 = Debug|Any CPU
 	EndGlobalSection
 EndGlobal

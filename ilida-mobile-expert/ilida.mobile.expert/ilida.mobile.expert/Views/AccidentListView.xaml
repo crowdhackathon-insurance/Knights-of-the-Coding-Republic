@@ -50,7 +50,7 @@
 								<Label Grid.Column="3" Text="Ασφαλισμένοι" HorizontalOptions="Center" VerticalOptions="Center" FontSize="11" FontAttributes="Bold" />
 								<Label Grid.Column="4" Text="Οδηγοί" HorizontalOptions="Center" VerticalOptions="Center" FontSize="11" FontAttributes="Bold" />
 								<Label Grid.Column="5" Text="Ασφαλιστικές Εταιρείες" HorizontalOptions="Center" VerticalOptions="Center" FontSize="11" FontAttributes="Bold" />
-								<Label Grid.Row="1" Grid.Column="0" Text="{Binding AccidentId}" FontSize="10" HorizontalOptions="Center" VerticalOptions="Center" />
+								<Label Grid.Row="1" Grid.Column="0" Text="{Binding AccidentId}" FontSize="14" HorizontalOptions="Center" VerticalOptions="Center" />
 								<Label Grid.Row="1" Grid.Column="1" Text="{Binding Date}" FontSize="10" HorizontalOptions="Center" VerticalOptions="Center" />
 								<Label Grid.Row="1" Grid.Column="2" Text="{Binding VehiclesString}" FontSize="10" HorizontalOptions="Center" VerticalOptions="Center" />
 								<Label Grid.Row="1" Grid.Column="3" Text="{Binding InsuredPeopleString}" FontSize="10" HorizontalOptions="Center" VerticalOptions="Center" />
@@ -67,7 +67,7 @@
 								<Label Grid.Row="3" Grid.Column="2" Text="{Binding HeavilyInjured}" FontSize="10" HorizontalOptions="Center" VerticalOptions="Center" />
 								<Label Grid.Row="3" Grid.Column="3" Text="{Binding Address}" FontSize="10" HorizontalOptions="Center" VerticalOptions="Center" />
 								<Label Grid.Row="3" Grid.Column="4" Text="{Binding Status}" FontSize="10" HorizontalOptions="Center" VerticalOptions="Center" />
-								<Button Grid.Row="3" Grid.Column="5" Text="Αποδοχή" Scale="0.8" FontSize="10" BackgroundColor="#5CB75C" TextColor="White" HorizontalOptions="Fill" VerticalOptions="Center" />
+								<Button Grid.Row="3" Grid.Column="5" Text="Αποδοχή" Command="{Binding AcceptCommand}" Scale="0.8" FontSize="10" BackgroundColor="#5CB75C" TextColor="White" HorizontalOptions="Fill" VerticalOptions="Center" />
 							</Grid>
 							<BoxView HeightRequest="2" BackgroundColor="Black" />
 						</StackLayout>

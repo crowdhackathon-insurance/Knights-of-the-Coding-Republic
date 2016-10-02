@@ -67,6 +67,7 @@ namespace ilida.mobile.expert
 					var view = this._vMsToViews[vm];
 					view.BindingContext = viewModel;
 					await this._navigation.PushAsync(view);
+					vm.Activated();
 					return;
 				}
 			}
@@ -81,6 +82,7 @@ namespace ilida.mobile.expert
 				{
 					var view = this._vMsToViews[cvm];
 					await this._navigation.PushAsync(view);
+					cvm.Activated();
 					return;
 				}
 			}

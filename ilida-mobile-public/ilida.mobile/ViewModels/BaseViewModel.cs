@@ -1,5 +1,6 @@
 ﻿using System;
 using System.ComponentModel;
+using System.Threading.Tasks;
 
 namespace ilida.mobile
 {
@@ -20,7 +21,7 @@ namespace ilida.mobile
 
 		public virtual void Activated()
 		{
-
+			
 		}
 
 	}

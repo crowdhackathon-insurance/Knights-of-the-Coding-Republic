@@ -10,15 +10,20 @@ namespace ilida.mobile.expert
 	public class AccidentViewModel : BaseViewModel
 	{
 		INavigationService _nav;
-		public AccidentViewModel(INavigationService nav)
+		IClientService _client;
+
+		public AccidentViewModel(INavigationService nav, IClientService client)
 		{
 			_nav = nav;
+			_client = client;
 			ShowImagesCommand = new Command(async () => await ShowImages());
+			AcceptCommand = new Command(async () => await Accept());
 		}
 
 		public ICommand ShowImagesCommand { get; set; }
+		public ICommand AcceptCommand { get; set; }
 
-		public string AccidentId { get; set; }
+		public long AccidentId { get; set; }
 		public string Date { get; set; }
 		public string Status { get; set; }
 		public string Address { get; set; }
@@ -65,6 +70,11 @@ namespace ilida.mobile.expert
 		{
 			var ivm = new ImagesViewModel(_nav) { Images = this.Photos };
 			await _nav.PushAsync(ivm);
+		}
+
+		public async Task Accept()
+		{
+			await _client.Accept(AccidentId);
 		}
 	}
 }

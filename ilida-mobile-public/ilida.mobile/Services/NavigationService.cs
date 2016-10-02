@@ -83,6 +83,7 @@ namespace ilida.mobile
 				if (cvm != null)
 				{
 					var view = this._vMsToViews[cvm];
+					view.Parent = null;
 					await this._navigation.PushAsync(view);
 					cvm.Activated();
 					return;

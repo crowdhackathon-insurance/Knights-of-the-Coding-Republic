@@ -1,7 +1,6 @@
-﻿
-namespace Ilida.Api.Models
+﻿namespace Ilida.Api.Models
 {
-    public class AccidentCondition
+    public class WorkflowStatus
     {
         public long Id { get; set; }
 

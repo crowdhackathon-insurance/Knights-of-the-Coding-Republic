@@ -8,10 +8,12 @@ namespace ilida.mobile
 	public class LoginViewModel : BaseViewModel
 	{
 		INavigationService _nav;
+		IClientService _client;
 
-		public LoginViewModel(INavigationService nav)
+		public LoginViewModel(INavigationService nav, IClientService client)
 		{
 			this._nav = nav;
+			this._client = client;
 			this.LoginCommand = new Command(() => Login());
 		}
 
@@ -63,8 +65,18 @@ namespace ilida.mobile
 
 		public async Task Login()
 		{
-			ErrorMessage = "Λάθος όνομα χρήστη ή κωδικός";
-			await _nav.PushAsync<AccidentListViewModel>();
+			try
+			{
+				await _client.Login(Username, Password);
+				ErrorMessage = "";
+				await _nav.PushAsync<AccidentListViewModel>();
+			}
+			catch (Exception ex)
+			{
+				ErrorMessage = "Λάθος όνομα χρήστη ή κωδικός";
+				return;
+			}
+
 		}
 	}
 }

@@ -8,10 +8,13 @@ namespace ilida.mobile.expert
 	public class LoginViewModel : BaseViewModel
 	{
 		INavigationService _nav;
+		IClientService _client;
 
-		public LoginViewModel(INavigationService nav)
+		public LoginViewModel(INavigationService nav, IClientService client)
 		{
 			this._nav = nav;
+			this._client = client;
+
 			this.LoginCommand = new Command(() => Login());
 		}
 
@@ -49,6 +52,7 @@ namespace ilida.mobile.expert
 
 		public async Task Login()
 		{
+			await _client.Login(Username, Password);
 			await _nav.PushAsync<AccidentListViewModel>();
 		}
 	}
