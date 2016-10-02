@@ -13,6 +13,7 @@ using System.Web.Http.Description;
 
 namespace Ilida.Api.Controllers
 {
+    [RoutePrefix("api/accidents")]
     public class AccidentsController : ApiController
     {
         private IlidaApiContext db = new IlidaApiContext();
@@ -111,7 +112,7 @@ namespace Ilida.Api.Controllers
                 WorkflowAction = await db.WorkflowActions.FindAsync(1),
                 Accident = accident,
                 PreviousWorkflowStatusId = 1,
-                NextWorkflowStatusId = 3,
+                NextWorkflowStatusId = 2,
                 Comment = "Αριθμός ατυχήματος: " + accident.Id
             };
 
@@ -126,8 +127,46 @@ namespace Ilida.Api.Controllers
         }
 
         // POST: api/Accidents/5/processed
+        [HttpPost]
+        [Route("{id}/process")]
         [ResponseType(typeof(AccidentDto))]
-        public async Task<IHttpActionResult> ProcessAccident(long id, long actionFromUserId)
+        public async Task<IHttpActionResult> ProcessAccident(long id, long userId)
+        {
+            Accident accident = await db.Accidents.FindAsync(id);
+            if (accident == null)
+            {
+                return NotFound();
+            }
+
+            db.Entry(accident).State = EntityState.Modified;
+
+            var lastAction = accident.AccidentActions.Last();
+
+            var action = new AccidentAction
+            {
+                Timestamp = DateTime.UtcNow,
+                UserId = userId,
+                WorkflowActionId = 2,
+                WorkflowAction = await db.WorkflowActions.FindAsync(2),
+                Accident = accident,
+                PreviousWorkflowStatusId = lastAction.NextWorkflowStatusId,
+                NextWorkflowStatusId = lastAction.NextWorkflowStatusId + 1,
+                Comment = "Από: " + userId
+            };
+            accident.AccidentActions.Add(action);
+            accident.WorkflowStatusId = lastAction.NextWorkflowStatusId + 1;
+            accident.WorkflowStatus = await db.WorkflowStatuses.FindAsync(accident.WorkflowStatusId);
+
+            await db.SaveChangesAsync();
+
+            return Ok(_accidentDtoMapper.Map(accident));
+        }
+
+        // POST: api/Accidents/5/accept
+        [HttpPost]
+        [Route("{id}/accept")]
+        [ResponseType(typeof(AccidentDto))]
+        public async Task<IHttpActionResult> AcceptAccident(long id, long userId)
         {
             Accident accident = await db.Accidents.FindAsync(id);
             if (accident == null)
@@ -140,16 +179,16 @@ namespace Ilida.Api.Controllers
             var action = new AccidentAction
             {
                 Timestamp = DateTime.UtcNow,
-                UserId = accident.UserId,
-                WorkflowActionId = 2,
-                WorkflowAction = await db.WorkflowActions.FindAsync(2),
+                UserId = userId,
+                WorkflowActionId = 3,
+                WorkflowAction = await db.WorkflowActions.FindAsync(3),
                 Accident = accident,
-                PreviousWorkflowStatusId = lastAction.WorkflowActionId,
-                NextWorkflowStatusId = 3,
-                Comment = "Από: " + actionFromUserId
+                PreviousWorkflowStatusId = lastAction.NextWorkflowStatusId,
+                NextWorkflowStatusId = lastAction.NextWorkflowStatusId + 1,
+                Comment = "Από: " + userId
             };
             accident.AccidentActions.Add(action);
-            accident.WorkflowStatusId++;
+            accident.WorkflowStatusId = lastAction.NextWorkflowStatusId + 1;
             accident.WorkflowStatus = await db.WorkflowStatuses.FindAsync(accident.WorkflowStatusId);
 
             db.Entry(accident).State = EntityState.Modified;
