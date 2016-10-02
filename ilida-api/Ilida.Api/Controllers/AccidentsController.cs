@@ -32,9 +32,15 @@ namespace Ilida.Api.Controllers
         }
 
         // GET: api/Accidents
-        public IEnumerable<AccidentDto> GetAccidents()
+        public IEnumerable<AccidentDto> GetAccidents(long userId = 0)
         {
-            return _accidentDtoMapper.Map(db.Accidents.ToList());
+            var query = db.Accidents.AsQueryable();
+            if (userId > 0)
+            {
+                query = query.Where(x => x.UserId == userId);
+            }
+
+            return _accidentDtoMapper.Map(query.ToList());
         }
 
         // GET: api/Accidents/5
