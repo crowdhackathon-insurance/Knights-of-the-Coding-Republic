@@ -41,6 +41,34 @@ namespace ilida.mobile
 			}
 		}
 
+		private bool _seriouslyInjured = false;
+		public bool SeriouslyInjured
+		{
+			get
+			{
+				return _seriouslyInjured;
+			}
+			set
+			{
+				_seriouslyInjured = value;
+				OnPropertyChanged(nameof(SeriouslyInjured));
+			}
+		}
+
+		private bool _inAccidentLocation = true;
+		public bool InAccidentLocation
+		{
+			get
+			{
+				return _inAccidentLocation;
+			}
+			set
+			{
+				_inAccidentLocation = value;
+				OnPropertyChanged(nameof(InAccidentLocation));
+			}
+		}
+
 		public void AddVehicle()
 		{
 			var last = _vehicles.LastOrDefault();
