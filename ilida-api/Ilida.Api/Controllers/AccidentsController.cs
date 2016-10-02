@@ -18,13 +18,17 @@ namespace Ilida.Api.Controllers
     {
         private IlidaApiContext db = new IlidaApiContext();
         private readonly IMapper<Accident, AccidentDto> _accidentDtoMapper;
+        private readonly IMapper<CreateAccidentRequest, Accident> _accidentFromCreateRequestMapper;
 
         public AccidentsController(
-            IMapper<Accident, AccidentDto> accidentDtoMapper)
+            IMapper<Accident, AccidentDto> accidentDtoMapper,
+            IMapper<CreateAccidentRequest, Accident> accidentFromCreateRequestMapper)
         {
             if (accidentDtoMapper == null) throw new ArgumentNullException("accidentDtoMapper");
+            if (accidentFromCreateRequestMapper == null) throw new ArgumentNullException("accidentFromCreateRequestMapper");
 
             _accidentDtoMapper = accidentDtoMapper;
+            _accidentFromCreateRequestMapper = accidentFromCreateRequestMapper;
         }
 
         // GET: api/Accidents
@@ -83,8 +87,10 @@ namespace Ilida.Api.Controllers
 
         // POST: api/Accidents
         [ResponseType(typeof(AccidentDto))]
-        public async Task<IHttpActionResult> PostAccident(Accident accident)
+        public async Task<IHttpActionResult> PostAccident(CreateAccidentRequest request)
         {
+            var accident = _accidentFromCreateRequestMapper.Map(request);
+
             accident.WorkflowStatus = await db.WorkflowStatuses.FindAsync(2);
             accident.WorkflowStatusId = accident.WorkflowStatus.Id;
             accident.User = await db.Users.FindAsync(accident.UserId);
@@ -117,6 +123,22 @@ namespace Ilida.Api.Controllers
             };
 
             accident.AccidentActions.Add(accidentAction);
+
+            // Add some fixed companies for now => this is to be populated by an async worker.
+            // The worker will hit several data APIs/sources to find as many data as it can.
+            accident.AccidentCompanies.Add(
+                new AccidentCompany
+                {
+                    AccidentId = accident.Id,
+                    CompanyId = 1,
+                    Company = await db.Companies.FindAsync(1)
+                });
+            accident.AccidentCompanies.Add(new AccidentCompany
+            {
+                AccidentId = accident.Id,
+                CompanyId = 2,
+                Company = await db.Companies.FindAsync(2)
+            });
 
             db.Entry(accident).State = EntityState.Modified;
             await db.SaveChangesAsync();
