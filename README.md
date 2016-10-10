@@ -3,7 +3,7 @@
 
 ![alt text](https://github.com/crowdhackathon-insurance/Knights-of-the-Coding-Republic/blob/master/ilida-design/Design/Icons/ilida_high_res.png?raw=true "ILIDA logo" )
 
-Project ILIDA is a platform that solves the problem of accident submition and management in grand scale. It is designed to act in a national scope, providing the right tools and support on every interested party, from the final consumer, to insurance companies, or even the police and the national emergency aid center.
+Project ILIDA is a platform that solves the problem of accident reporting and management in grand scale. It is designed to act in a national scope, providing the right tools and support on every interested party, from the final consumer, to insurance companies, or even the police and the national emergency aid center.
 
 The platform consists of various modules and sub-modules, four of them are presented here as a MVP.
 * Mobile app for consumers
